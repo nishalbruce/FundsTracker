@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 //import 'package:funds_tracker/pages/splash.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '././config/widgets.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const NavigationBarApp());
 }
 
 class MyApp extends StatelessWidget {
