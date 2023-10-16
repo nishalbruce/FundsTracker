@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
       ),
       //home: Splash(),
       home: const MyHomePage(title: 'Funds Tracker'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -125,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-        //child: Image.asset('../assets/icons/request-quote 1.svg')
+        //child: Image.asset('../assets/icons/request-quote.svg')
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

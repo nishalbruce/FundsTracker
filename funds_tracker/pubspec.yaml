@@ -40,6 +40,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  fontify: ^0.3.0-nullsafety.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -58,6 +59,22 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+fontify:
+  input_svg_dir: "assets/icons/"
+  output_font_file: "assets/fonts/my_icons_font.otf"
+
+  output_class_file: "lib/src/my_icons.dart"
+  class_name: "MyIcons"
+  indent: 4
+  package: my_font_package
+
+  font_name: "MyIcons"
+  normalize: true
+  ignore_shapes: true
+
+  recursive: true
+  verbose: false
 
   # To add assets to your application, add an assets section, like this:
   assets:
