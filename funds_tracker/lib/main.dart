@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+//import 'package:funds_tracker/pages/splash.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
+      theme: ThemeData.dark(
         // This is the theme of your application.
         //
         // TRY THIS: Try running your application with "flutter run". You'll see
@@ -28,9 +30,10 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
+        //colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
         useMaterial3: true,
       ),
+      //home: Splash(),
       home: const MyHomePage(title: 'Funds Tracker'),
     );
   }
@@ -84,7 +87,9 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(widget.title), titleTextStyle: GoogleFonts.lexend(
+        fontSize: 20
+      ),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -119,6 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
+        //child: Image.asset('../assets/icons/request-quote 1.svg')
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
