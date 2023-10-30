@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
-//import 'package:funds_tracker/pages/splash.dart';
+
+//import 'package:funds_tracker/screens/requester/first_page.dart';
+import './screens/requester/profile.dart';
+import './screens/requester/history.dart';
+//import './screens/approver/dashboard.dart';
+import './screens/splash.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '././config/widgets.dart';
+//import './config/widgets.dart';
+//import './screens/requester/home.dart';
+import 'src/my_icons.dart';
+import 'components/navbar.dart';
 
 void main() {
-  runApp(const NavigationBarApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,26 +24,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.dark(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        //colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
         useMaterial3: true,
       ),
       //home: Splash(),
-      home: const MyHomePage(title: 'Funds Tracker'),
+      home: const NavBar(),
+      routes: {
+        "/history" :(context) => const History(),
+        "/profile" :(context) => const Profile(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }
@@ -89,9 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title), titleTextStyle: GoogleFonts.lexend(
-        fontSize: 20
-      ),
+        title: Text(widget.title),
+        titleTextStyle: GoogleFonts.lexend(fontSize: 20),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -115,6 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
+            const Icon(MyIcons.dashboradactive, size: 40),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,

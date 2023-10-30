@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChatGPTCopilotChannelManager">
+    <option name="a" value="true" />
     <dynamicCommends>
       <option value="explain" />
       <option value="translate to chinese" />
@@ -10,6 +11,8 @@
     </dynamicCommends>
     <chatChannels>
       <chatChannel>
+        <option name="continuousFlag" value="false" />
+        <option name="tokenCompression" value="true" />
         <option name="messages" />
       </chatChannel>
     </chatChannels>

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Profile extends StatelessWidget {
-  const Profile({super.key});
+class History extends StatelessWidget {
+  const History({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text("Profile Page"),
+        child: Text("History"),
       ),
     );
   }
