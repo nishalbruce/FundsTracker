@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       //home: Splash(),
-      home: const Home(),
+      home: const History(),
       routes: {
         "/history" :(context) => const History(),
         "/profile" :(context) => const Profile(),
