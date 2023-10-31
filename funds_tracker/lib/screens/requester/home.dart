@@ -85,7 +85,7 @@ class _HomeState extends State<Home> {
                   height: 10,
                 ),
 
-                Column(
+                const Column(
                   children: [
                     RequestListTile(),
                     RequestListTile(),
@@ -128,7 +128,7 @@ class _HomeState extends State<Home> {
 
                 Expanded(
                   child: ListView(
-                    children: [
+                    children: const [
                       RequestListTile(),
                       RequestListTile(),
                       RequestListTile(),

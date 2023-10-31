@@ -23,9 +23,9 @@ class _FirstPageState extends State<FirstPage> {
 
   // List of screens
   final List _screens = [
-    Home(),
-    History(),
-    Profile(),
+    const Home(),
+    const History(),
+    const Profile(),
   ];
 
   @override

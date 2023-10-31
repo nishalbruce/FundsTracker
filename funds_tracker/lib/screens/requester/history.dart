@@ -13,6 +13,7 @@ class _HistoryState extends State<History> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           elevation: 1,
           title: const Text(
             "History",
@@ -54,7 +55,7 @@ class _HistoryState extends State<History> {
               //),
               Expanded(
                 child: ListView(
-                  children: [
+                  children: const [
                     RequestListTile(),
                     RequestListTile(),
                     RequestListTile(),

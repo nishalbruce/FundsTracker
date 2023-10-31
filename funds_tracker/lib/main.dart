@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './screens/approver/dashboard.dart';
 import './screens/requester/profile.dart';
 import './screens/requester/history.dart';
 //import 'components/navbar.dart';
@@ -14,9 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Funds Tracker',
       //home: Splash(),
-      home: const Profile(),
+      home: const Dashboard(),
       routes: {
         "/history" :(context) => const History(),
         "/profile" :(context) => const Profile(),
