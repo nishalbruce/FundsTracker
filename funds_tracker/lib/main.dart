@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:funds_tracker/screens/requester/home.dart';
 import './screens/requester/profile.dart';
 import './screens/requester/history.dart';
 //import 'components/navbar.dart';
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       //home: Splash(),
-      home: const History(),
+      home: const Profile(),
       routes: {
         "/history" :(context) => const History(),
         "/profile" :(context) => const Profile(),

@@ -12,20 +12,19 @@ class _HistoryState extends State<History> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 1,
-        title: const Text(
+        appBar: AppBar(
+          elevation: 1,
+          title: const Text(
             "History",
-          style: TextStyle(
-            color: Colors.black,
+            style: TextStyle(
+              color: Colors.black,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
+          backgroundColor: Colors.white,
         ),
-        backgroundColor: Colors.white,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Container(
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -36,11 +35,9 @@ class _HistoryState extends State<History> {
                     fontSize: 24,
                     fontWeight: FontWeight.w700),
               ),
-
               const SizedBox(
                 height: 10,
               ),
-
               const Text(
                 "Filter by",
                 style: TextStyle(
@@ -48,11 +45,13 @@ class _HistoryState extends State<History> {
                     fontSize: 20,
                     fontWeight: FontWeight.w400),
               ),
-
               const SizedBox(
                 height: 10,
               ),
-
+              //DropdownButton(
+              //    items: items,
+              //    onChanged: onChanged,
+              //),
               Expanded(
                 child: ListView(
                   children: [
@@ -72,8 +71,6 @@ class _HistoryState extends State<History> {
               )
             ],
           ),
-        ),
-      )
-    );
+        ));
   }
 }
