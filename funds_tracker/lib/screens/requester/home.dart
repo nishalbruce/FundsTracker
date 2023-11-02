@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'request.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../components/request_list_tile.dart';
@@ -37,7 +38,7 @@ class _HomeState extends State<Home> {
             )
           ]),
         backgroundColor: Colors.white,
-        body: SafeArea(
+      body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
             child: Column(
@@ -142,6 +143,18 @@ class _HomeState extends State<Home> {
             ),
           ),
         ),
+      floatingActionButton: FloatingActionButton(
+        elevation: 0,
+        backgroundColor: const Color(0xFF40A6DD),
+        shape: const CircleBorder(),
+        onPressed: () {
+          Navigator.pushNamed(
+              context, "/request"
+          );
+        },
+        highlightElevation: 0,
+        child: const Icon(Icons.edit),
+      ),
       
     );
   }

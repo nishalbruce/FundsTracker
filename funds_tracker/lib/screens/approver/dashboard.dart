@@ -75,106 +75,110 @@ class _DashboardState extends State<Dashboard> {
               ),
 
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: 165,
-                    color: const Color(0x2BFFA012),
-                    padding: const EdgeInsets.all(17),
-                    //decoration: BoxDecoration(
-                    //  color: Colors.white,
-                    //  borderRadius: BorderRadius.circular(10),
-                    //),
-                    child: const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Pending Requests",
-                          style: TextStyle(
-                              color: Color(0xFFFFA012),
-                              fontSize: 24,
-                              fontWeight: FontWeight.w500),
-                        ),
+                  GestureDetector(
+                    onTap: (){},
+                    child: Container(
+                      width: 165,
+                      decoration: BoxDecoration(
+                        color: const Color(0x2BFFA012),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.fromLTRB(17, 17, 17, 10),
+                      child: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Pending Requests",
+                            style: TextStyle(
+                                color: Color(0xFFFFA012),
+                                fontSize: 24,
+                                fontWeight: FontWeight.w500),
+                          ),
 
-                        Text(
-                          "10",
-                          style: TextStyle(
-                              color: Color(0x73FFA012),
-                              fontSize: 64,
-                              fontWeight: FontWeight.w900),
-                        ),
-                      ],
+                          Text(
+                            "10",
+                            style: TextStyle(
+                                color: Color(0x73FFA012),
+                                fontSize: 64,
+                                fontWeight: FontWeight.w900),
+
+                          ),
+                        ],
+                      ),
                     ),
                   ),
 
-                  const SizedBox(
-                    width: 20,
-                  ),
+                  GestureDetector(
+                    onTap: (){},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0x2B17D72A),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      width: 165,
+                      padding: const EdgeInsets.fromLTRB(17, 17, 17, 10),
+                      child: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Approved Requests",
+                            style: TextStyle(
+                                color: Color(0xFF17D72A),
+                                fontSize: 24,
+                                fontWeight: FontWeight.w500),
+                          ),
 
-                  Container(
-
-                    width: 165,
-                    color: const Color(0x2B17D72A),
-                    padding: const EdgeInsets.all(17),
-                    //decoration: BoxDecoration(
-                    //  color: Colors.white,
-                    //  borderRadius: BorderRadius.circular(10),
-                    //),
-                    child: const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Approved Requests",
-                          style: TextStyle(
-                              color: Color(0xFF17D72A),
-                              fontSize: 24,
-                              fontWeight: FontWeight.w500),
-                        ),
-
-                        Text(
-                          "10",
-                          style: TextStyle(
-                              color: Color(0x7317D72A),
-                              fontSize: 64,
-                              fontWeight: FontWeight.w900),
-                        ),
-                      ],
+                          Text(
+                            "10",
+                            style: TextStyle(
+                                color: Color(0x7317D72A),
+                                fontSize: 64,
+                                fontWeight: FontWeight.w900),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
 
               const SizedBox(
-                height: 20,
+                height: 22.5,
               ),
 
               Column(
                 children: [
-                  Container(
-                    //decoration: BoxDecoration(
-                    //    borderRadius: BorderRadius.circular(10)
-                    //),
-                    width: double.infinity,
-                    color: const Color(0x2BE9190C),
-                    padding: const EdgeInsets.all(17),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Rejected Requests",
-                          style: TextStyle(
-                              color: Color(0xFFE9190C),
-                              fontSize: 24,
-                              fontWeight: FontWeight.w500),
-                        ),
+                  GestureDetector(
+                    onTap: (){},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color(0x2BE9190C),
+                      ),
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(17),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Rejected Requests",
+                            style: TextStyle(
+                                color: Color(0xFFE9190C),
+                                fontSize: 24,
+                                fontWeight: FontWeight.w500),
+                          ),
 
-                        Text(
-                          "10",
-                          style: TextStyle(
-                              color: Color(0x73E9190C),
-                              fontSize: 64,
-                              fontWeight: FontWeight.w900),
-                        ),
-                      ],
+                          Text(
+                            "10",
+                            style: TextStyle(
+                                color: Color(0x73E9190C),
+                                fontSize: 64,
+                                fontWeight: FontWeight.w900),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],

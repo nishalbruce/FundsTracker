@@ -12,6 +12,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 1,
         centerTitle: true,
         backgroundColor: Colors.white,
         title: const Text(

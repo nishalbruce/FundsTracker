@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:funds_tracker/screens/requester/home.dart';
+import './screens/requester/request.dart';
 import './screens/approver/dashboard.dart';
 import './screens/requester/profile.dart';
 import './screens/requester/history.dart';
@@ -17,10 +19,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Funds Tracker',
       //home: Splash(),
-      home: const Dashboard(),
+      home: const Home(),
       routes: {
         "/history" :(context) => const History(),
         "/profile" :(context) => const Profile(),
+        "/request" :(context) => const Request(),
       },
       debugShowCheckedModeBanner: false,
     );
