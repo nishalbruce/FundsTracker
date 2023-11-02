@@ -14,7 +14,7 @@ class Splash extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.white,
         body: Center(
-            child: Image.asset("./images/bc.png")
+            child: Image.asset("./images/aclis-onlight.png")
           ),
         ),
       );

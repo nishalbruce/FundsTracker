@@ -28,7 +28,7 @@ class _ProfileState extends State<Profile> {
           child: Column(
             children: [
               Image(
-                  image: AssetImage("./././assets/images/bc.png")
+                  image: AssetImage("./././assets/images/aclis-onlight.png")
               ),
 
               Text(
