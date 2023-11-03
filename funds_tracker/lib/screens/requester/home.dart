@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'request.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../components/request_list_tile.dart';
+import '../../common/widgets/request_list_tile.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

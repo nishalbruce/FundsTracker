@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:funds_tracker/screens/requester/home.dart';
+import 'package:funds_tracker/utils/theme/theme.dart';
 import './screens/requester/request.dart';
 import './screens/requester/profile.dart';
 import './screens/requester/history.dart';
@@ -17,8 +18,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       themeMode: ThemeMode.system,
-      theme: ThemeData(),
-      darkTheme: ThemeData(),
+      theme: FAppTheme.lightTheme,
+      darkTheme: FAppTheme.darkTheme,
       title: 'Funds Tracker',
       //home: Splash(),
       home: const Home(),
