@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:funds_tracker/src/my_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -75,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            const Icon(MyIcons.dashboradactive, size: 40),
+            const Icon(Icons.dashboard_rounded, size: 40),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,

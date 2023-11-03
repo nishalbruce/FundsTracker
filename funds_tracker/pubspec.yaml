@@ -37,72 +37,32 @@ dev_dependencies:
 
 
 
-
 flutter:
-
-  
-  
-  
   uses-material-design: true
 
-fontify:
-    input_svg_dir: "assets/icons/"
-    output_font_file: "assets/fonts/my_icons_font.otf"
 
-    output_class_file: "lib/src/my_icons.dart"
-    class_name: "MyIcons"
-    indent: 4
-    package: my_font_package
+  #--------------- LOCAL ASSETS ---------------#
+  assets:
+      - assets/logos/
+      - assets/icons/
 
-    font_name: "MyIcons"
-    normalize: true
-    ignore_shapes: true
-
-    recursive: true
-    verbose: false
-
-  
-assets:
-    - assets/images/
-    - assets/icons/
-    - lib/images/
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  
-  
-  
-
-fonts:
+  #--------------- LOCAL FONTS ---------------#
+  fonts:
     - family: Lexend
       fonts:
-        - asset: assets/fonts/Lexend-Black.ttf
-        - asset: assets/fonts/Lexend-Bold.ttf
-        - asset: assets/fonts/Lexend-ExtraBold.ttf
+        - asset: assets/fonts/Lexend-Thin.ttf
         - asset: assets/fonts/Lexend-ExtraLight.ttf
         - asset: assets/fonts/Lexend-Light.ttf
-        - asset: assets/fonts/Lexend-Medium.ttf
         - asset: assets/fonts/Lexend-Regular.ttf
+        - asset: assets/fonts/Lexend-Medium.ttf
         - asset: assets/fonts/Lexend-SemiBold.ttf
-        - asset: assets/fonts/Lexend-Thin.ttf
-          style: italic
+        - asset: assets/fonts/Lexend-Bold.ttf
+        - asset: assets/fonts/Lexend-ExtraBold.ttf
+        - asset: assets/fonts/Lexend-Black.ttf
 
-    - family: MyIcons
-      fonts:
-        - asset: fonts/my_icons_font.otf
 
-      
-      
-    
-    
-    
-  
-  
-  
+
+
+
+
+
