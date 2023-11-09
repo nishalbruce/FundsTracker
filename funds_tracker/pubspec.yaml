@@ -1,5 +1,6 @@
 name: funds_tracker
-description: A new Flutter project.
+description: This is an app that will elp ACLIS board to track their expenses 
+  and how their funds are being used.
 
 publish_to: 'none'
 version: 1.0.0+1
@@ -23,7 +24,7 @@ dependencies:
   iconsax: ^0.0.8
 
   # State Management
-
+  get: ^4.6.6
 
 #------------------- PACKAGES END ----------------#
 
@@ -31,7 +32,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  fontify: ^0.3.0-nullsafety.1
   flutter_lints: ^3.0.0
 
 

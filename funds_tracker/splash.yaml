@@ -1,0 +1,20 @@
+flutter_native_splash:
+  color: "#FFFFFF"
+  color_dark: "#272727"
+  image_size: "20"
+  image: assets/logos/app-logo.png
+  image_dark: assets/logos/app-logo.png
+
+  android_12:
+    color: "#FFFFFF"
+    color_dark: "#272727"
+    image: assets/logos/app-logo.png
+    image_dark: assets/logos/app-logo.png
+
+  web: false
+  android: true
+  ios: true
+
+  branding: assets/logos/aclis-onlight.png
+  branding_mode: bottom
+  branding_dark: assets/logos/aclis-ondark.png

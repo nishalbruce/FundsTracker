@@ -3,6 +3,7 @@
 class FImages{
 
   // ------ App Logos --------
-  static const String darkAppLogo = "assets/logos/aclis-ondark.png";
-  static const String lightAppLogo = "assets/logos/aclis-onlight.png";
+  static const String darkAclisLogo = "assets/logos/aclis-ondark.png";
+  static const String lightAclisLogo = "assets/logos/aclis-onlight.png";
+  static const String appLogo = "assets/logos/app-logo.png";
 }

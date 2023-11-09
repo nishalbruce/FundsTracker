@@ -17,20 +17,23 @@ class Request extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context, MaterialPageRoute(
-                    builder: (context) => const Request(),
-                  ),
-                  );
-                },
-              style: const ButtonStyle(
-                  
-              ),
-                child: const Text(
-                  "Submit"
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context, MaterialPageRoute(
+                      builder: (context) => const Request(),
+                    ),
+                    );
+                  },
+                style: const ButtonStyle(
+
                 ),
+                  child: const Text(
+                    "Submit"
+                  ),
+              ),
             )
           ],
         ),

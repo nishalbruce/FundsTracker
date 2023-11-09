@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:funds_tracker/utils/constants/sizes.dart';
+import 'package:iconsax/iconsax.dart';
 import 'request.dart';
-//import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../common/widgets/request_list_tile.dart';
 
@@ -17,7 +18,6 @@ class _HomeState extends State<Home> {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
           elevation: 10,
-          backgroundColor: Colors.white,
           items: const [
             BottomNavigationBarItem(
               backgroundColor: Colors.white,
@@ -37,7 +37,6 @@ class _HomeState extends State<Home> {
                 label: ""
             )
           ]),
-        backgroundColor: Colors.white,
       body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
@@ -50,7 +49,6 @@ class _HomeState extends State<Home> {
                     Text(
                       "👋🏻 Hello, John",
                       style: TextStyle(
-                          color: Colors.black,
                           fontSize: 20,
                           fontWeight: FontWeight.w500),
                     ),
@@ -77,7 +75,6 @@ class _HomeState extends State<Home> {
                 const Text(
                   "Recent Requests",
                   style: TextStyle(
-                      color: Colors.black,
                       fontSize: 24,
                       fontWeight: FontWeight.w700),
                 ),
@@ -102,14 +99,15 @@ class _HomeState extends State<Home> {
                         Text(
                           "View All",
                           style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: Colors.black
+                            decoration: TextDecoration.underline,
+                            color: Color(0xFF40A6DD),
+                            fontSize: FSizes.fontSizeSm,
                           ),
                         ),
                         Icon(
                             Icons.arrow_forward_ios_rounded,
                           size: 12,
-                          color: Colors.black,
+                          color: Color(0xFF40A6DD)
                         )
                       ],
                     ),
@@ -153,7 +151,7 @@ class _HomeState extends State<Home> {
           );
         },
         highlightElevation: 0,
-        child: const Icon(Icons.edit),
+        child: const Icon(Iconsax.edit, color: Colors.white,),
       ),
       
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../helpers/helper_functions.dart';
+
 class FInputDecorationTheme {
   FInputDecorationTheme._();
 
@@ -33,14 +35,14 @@ class FInputDecorationTheme {
         borderRadius: BorderRadius.circular(10),
         borderSide: const BorderSide(
             width: 1,
-            color: Colors.grey
+            color: Color(0xFFCECECE)
         )
     ),
     focusedBorder: const OutlineInputBorder().copyWith(
         borderRadius: BorderRadius.circular(10),
         borderSide: const BorderSide(
             width: 1,
-            color: Colors.black12
+            color: Colors.grey
         )
     ),
     errorBorder: const OutlineInputBorder().copyWith(
@@ -76,7 +78,7 @@ class FInputDecorationTheme {
         fontStyle: FontStyle.normal
     ),
     floatingLabelStyle: const TextStyle().copyWith(
-        color: Colors.black.withOpacity(0.8)
+        color: Colors.white.withOpacity(0.8)
     ),
     border: const OutlineInputBorder().copyWith(
         borderRadius: BorderRadius.circular(10),

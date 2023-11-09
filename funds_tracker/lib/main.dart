@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:funds_tracker/common/widgets/navigation_bar.dart';
+import 'package:funds_tracker/features/authentication/screens/login/login.dart';
 import 'package:funds_tracker/screens/requester/home.dart';
+//import 'package:funds_tracker/screens/requester/home.dart';
 import 'package:funds_tracker/utils/theme/theme.dart';
 import './screens/requester/request.dart';
 import './screens/requester/profile.dart';
@@ -22,11 +25,13 @@ class MyApp extends StatelessWidget {
       darkTheme: FAppTheme.darkTheme,
       title: 'Funds Tracker',
       //home: Splash(),
-      home: const Home(),
+      home: const LoginScreen(),
       routes: {
         "/history" :(context) => const History(),
         "/profile" :(context) => const Profile(),
         "/request" :(context) => const Request(),
+        "/home" :(context) => const Home(),
+        "/nav" :(context) => const NavigBar(),
       },
       debugShowCheckedModeBanner: false,
     );
