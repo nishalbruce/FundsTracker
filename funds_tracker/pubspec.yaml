@@ -24,6 +24,7 @@ dependencies:
 
   # State Management
   get: ^4.6.6
+  date_field: ^3.0.5
 
 #------------------- PACKAGES END ----------------#
 
@@ -42,7 +43,7 @@ flutter:
 
   #--------------- LOCAL ASSETS ---------------#
   assets:
-      - assets/logos/
+      - assets/images/
       - assets/icons/
 
   #--------------- LOCAL FONTS ---------------#

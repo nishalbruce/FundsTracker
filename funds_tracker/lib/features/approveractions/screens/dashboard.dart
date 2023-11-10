@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_svg/flutter_svg.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../../common/widgets/request_list_tile.dart';
 
@@ -14,29 +14,6 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-          elevation: 10,
-          backgroundColor: Colors.white,
-          items: const [
-            BottomNavigationBarItem(
-              backgroundColor: Colors.white,
-              icon: Icon(
-                Icons.dashboard_rounded,
-                color: Color(0xFF40A6DD),
-                size: 24,
-              ),
-              label: "",
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.bar_chart_rounded),
-                label: ""
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: ""
-            )
-          ]),
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
@@ -49,13 +26,12 @@ class _DashboardState extends State<Dashboard> {
                   Text(
                     "Dashboard",
                     style: TextStyle(
-                        color: Colors.black,
                         fontSize: 24,
                         fontWeight: FontWeight.w700),
                   ),
 
                   Icon(
-                    Icons.notifications,
+                    Iconsax.notification_bing5,
                   ),
 
                   //Container(
@@ -191,7 +167,6 @@ class _DashboardState extends State<Dashboard> {
               const Text(
                 "New Requests",
                 style: TextStyle(
-                    color: Colors.black,
                     fontSize: 24,
                     fontWeight: FontWeight.w700),
               ),

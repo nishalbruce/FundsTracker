@@ -35,9 +35,6 @@ class FElevatedBtnTheme {
           backgroundColor: const Color(0xFF40A6DD),
           disabledForegroundColor: Colors.grey,
           disabledBackgroundColor: Colors.grey,
-          //side: const BorderSide(
-          //    color: Color(0xFF40A6DD)
-          //),
           padding: const EdgeInsets.symmetric(vertical: 18),
           textStyle: const TextStyle(
             fontSize: 16,

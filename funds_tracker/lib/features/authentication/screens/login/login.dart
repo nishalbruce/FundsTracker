@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:funds_tracker/common/widgets/navigation_menu.dart';
+import 'package:funds_tracker/common/widgets/navigation_menu_approver.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:get/get.dart';
 import 'package:funds_tracker/common/styles/spacing_styles.dart';
@@ -7,6 +7,7 @@ import 'package:funds_tracker/utils/constants/colors.dart';
 import 'package:funds_tracker/utils/constants/image_strings.dart';
 import 'package:funds_tracker/utils/constants/sizes.dart';
 
+import '../../../../common/widgets/navigation_menu.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -115,6 +116,18 @@ class LoginScreen extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () => Get.to(() => const NavigationMenu()),
                         child: const Text("Validate"),
+                      ),
+                    ),
+
+                    const SizedBox(
+                        height: FSizes.spaceBtwItems
+                    ),
+
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () => Get.to(() => const NavigationMenuApprover()),
+                        child: const Text("Go To Approver"),
                       ),
                     )
                   ],

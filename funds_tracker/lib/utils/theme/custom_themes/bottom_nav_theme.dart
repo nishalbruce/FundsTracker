@@ -5,13 +5,14 @@ class FBottomNavTheme {
 
   static NavigationBarThemeData lightBottomNavBarTheme = const NavigationBarThemeData(
     backgroundColor: Colors.white,
-    elevation: 1,
+    elevation: 2,
 
   );
 
   static NavigationBarThemeData darkBottomNavBarTheme = const NavigationBarThemeData(
     backgroundColor: Colors.black12,
-    elevation: 1,
+    indicatorColor: Colors.cyan,
+    elevation: 2,
 
   );
 }

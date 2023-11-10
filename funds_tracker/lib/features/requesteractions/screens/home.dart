@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:funds_tracker/features/requesteractions/screens/request.dart';
+import 'package:get/get.dart';
 import 'package:funds_tracker/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../common/widgets/request_list_tile.dart';
-import 'request.dart';
 
 
 class Home extends StatefulWidget {
@@ -16,28 +17,6 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        //bottomNavigationBar: NavigationBar(
-        //    elevation: 0,
-        //    //selectedIndex: controller.selectedIndex.value,
-        //    //onDestinationSelected: (index) => controller.selectedIndex.value = index,
-        //    destinations: const [
-        //      NavigationDestination(
-        //        icon: Icon(Iconsax.home),
-        //        selectedIcon: Icon(Iconsax.home_15),
-        //        label: "Home",
-        //      ),
-        //      NavigationDestination(
-        //        icon: Icon(Iconsax.clock),
-        //        selectedIcon: Icon(Icons.history),
-        //        label: "History",
-        //      ),
-        //      NavigationDestination(
-        //        icon: Icon(Iconsax.frame_1),
-        //        selectedIcon: Icon(Icons.person),
-        //        label: "Profile",
-        //      ),
-        //    ],
-        //  ),
       body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
@@ -55,19 +34,8 @@ class _HomeState extends State<Home> {
                     ),
 
                     Icon(
-                      Icons.notifications,
+                      Iconsax.notification_bing5,
                     ),
-
-                    //Container(
-                    //  decoration: BoxDecoration(
-                    //    color: Colors.grey[300],
-                    //    borderRadius: BorderRadius.circular(12),
-                    //  ),
-                    //  padding: EdgeInsets.all(12),
-                    //  child: Icon(
-                    //    Icons.notifications,
-                    //  ),
-                    //)
                   ],
                 ),
                 const SizedBox(
@@ -146,11 +114,7 @@ class _HomeState extends State<Home> {
         elevation: 0,
         backgroundColor: const Color(0xFF40A6DD),
         shape: const CircleBorder(),
-        onPressed: () {
-          Navigator.pushNamed(
-              context, "/request"
-          );
-        },
+        onPressed: () => Get.to(() => const Request()),
         highlightElevation: 0,
         child: const Icon(Iconsax.edit, color: Colors.white,),
       ),

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:funds_tracker/features/authentication/screens/login/login.dart';
+import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
+import '../../../utils/constants/image_strings.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -14,48 +18,55 @@ class _ProfileState extends State<Profile> {
       appBar: AppBar(
         elevation: 1,
         centerTitle: true,
-        backgroundColor: Colors.white,
         title: const Text(
             "Profile",
           style: TextStyle(
-            color: Colors.black,
           ),
         ),
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(20.0),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
         child: Center(
           child: Column(
             children: [
-              Image(
-                  image: AssetImage("./././assets/images/aclis-onlight.png")
+              const CircleAvatar(
+                radius: (50), // Image radius
+                backgroundImage: AssetImage(FImages.profile),
               ),
 
-              Text(
+              const SizedBox(
+                height: 20,
+              ),
+
+              const Text(
                 "John Doe",
                 style: TextStyle(
-                    color: Colors.black,
                     fontSize: 16,
                     fontWeight: FontWeight.normal),
               ),
-              Text(
+              const Text(
                 "johndoe@gmail.com",
                 style: TextStyle(
-                    color: Colors.black,
                     fontSize: 16,
                     fontWeight: FontWeight.w600),
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
 
-              //ElevatedButton(
-              //  onPressed: () {},
-              //  child: Text(
-              //      "Sign Out"
-              //  ),
-              //)
+              SizedBox(
+                child: ElevatedButton(
+                  onPressed: () => Get.to(() => const LoginScreen()),
+                  child: const Row(
+                    children: [
+                      Icon(Iconsax.logout),
+                      SizedBox(width: 10),
+                      Text("Logout"),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
