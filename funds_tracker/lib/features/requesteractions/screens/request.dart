@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:funds_tracker/features/requesteractions/screens/home.dart';
+import 'package:funds_tracker/utils/constants/colors.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:date_field/date_field.dart';
-
-import '../../../utils/constants/colors.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:radio_group_v2/radio_group_v2.dart';
 import '../../../utils/constants/sizes.dart';
 
 class Request extends StatefulWidget {
@@ -19,8 +19,14 @@ class Request extends StatefulWidget {
 class _RequestState extends State<Request> {
   @override
   Widget build(BuildContext context) {
-
-    DateTime dateTime = DateTime(2001, 1, 1);
+    final List<String> requestCategory = [
+      "Transport",
+      "Airtime",
+      "Dish",
+      "Water"
+    ];
+    String? selectedValue;
+    RadioGroupController myController = RadioGroupController();
 
     return Scaffold(
       appBar: AppBar(
@@ -52,10 +58,57 @@ class _RequestState extends State<Request> {
                         height: FSizes.spaceBtwInputFields
                     ),
 
-                    TextFormField(
+                    DropdownButtonFormField2<String>(
+                      isExpanded: true,
                       decoration: const InputDecoration(
-                        prefixIcon: Icon(Iconsax.frame5),
-                        labelText: "Password",
+                        // Add Horizontal padding using menuItemStyleData.padding so it matches
+                        // the menu padding when button's width is not specified.
+                        contentPadding: EdgeInsets.symmetric(vertical: 16),
+                        // Add more decoration..
+                      ),
+                      hint: const Text(
+                        'Select The Request Category',
+                        style: TextStyle(fontSize: 14),
+                      ),
+                      items: requestCategory
+                          .map((item) => DropdownMenuItem<String>(
+                        value: item,
+                        child: Text(
+                          item,
+                          style: const TextStyle(
+                            fontSize: 14,
+                          ),
+                        ),
+                      ))
+                          .toList(),
+                      validator: (value) {
+                        if (value == null) {
+                          return 'Please select the request category.';
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        //Do something when selected item is changed.
+                      },
+                      onSaved: (value) {
+                        selectedValue = value.toString();
+                      },
+                      buttonStyleData: const ButtonStyleData(
+                        padding: EdgeInsets.only(right: 8),
+                      ),
+                      iconStyleData: const IconStyleData(
+                        icon: Icon(
+                          Iconsax.arrow_circle_down
+                        ),
+                        iconSize: 24,
+                      ),
+                      dropdownStyleData: DropdownStyleData(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                      menuItemStyleData: const MenuItemStyleData(
+                        padding: EdgeInsets.symmetric(horizontal: 16),
                       ),
                     ),
 
@@ -65,7 +118,7 @@ class _RequestState extends State<Request> {
 
                     TextFormField(
                       decoration: const InputDecoration(
-                        prefixIcon: Icon(Iconsax.frame5),
+                        prefixIcon: Icon(Iconsax.frame_1),
                         labelText: "Full Name",
                       ),
                     ),
@@ -127,11 +180,22 @@ class _RequestState extends State<Request> {
                         height: FSizes.spaceBtwInputFields
                     ),
 
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(Iconsax.frame5),
-                        labelText: "Password",
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text("Payed by: "),
+                        RadioGroup(
+                          controller: myController,
+                          values: const ["Me", "ACLIS"],
+                          indexOfDefault: 0,
+                          orientation: RadioGroupOrientation.horizontal,
+                          decoration: const RadioGroupDecoration(
+                            spacing: 10.0,
+                            splashRadius: 20,
+                            activeColor: FColors.primary,
+                          ),
+                        ),
+                      ],
                     ),
 
                     const SizedBox(
@@ -144,8 +208,8 @@ class _RequestState extends State<Request> {
                       child: ElevatedButton(
                         onPressed: () => Get.to(() => const Home()),
                         child: const Text("Submit"),
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ))

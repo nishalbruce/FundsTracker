@@ -41,15 +41,16 @@ class _ProfileState extends State<Profile> {
               const Text(
                 "John Doe",
                 style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600
+                ),
               ),
-              const Text(
-                "johndoe@gmail.com",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600),
+
+              const SizedBox(
+                height: 10,
               ),
+
+              const Text("johndoe@gmail.com"),
 
               const SizedBox(
                 height: 50,
@@ -59,6 +60,7 @@ class _ProfileState extends State<Profile> {
                 child: ElevatedButton(
                   onPressed: () => Get.to(() => const LoginScreen()),
                   child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Iconsax.logout),
                       SizedBox(width: 10),
