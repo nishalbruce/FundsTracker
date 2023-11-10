@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:funds_tracker/screens/requester/history.dart';
-import 'package:funds_tracker/screens/requester/home.dart';
-import 'package:funds_tracker/screens/requester/profile.dart';
+import 'package:funds_tracker/features/requesteractions/screens/history.dart';
+import 'package:funds_tracker/features/requesteractions/screens/profile.dart';
 import 'package:funds_tracker/utils/helpers/helper_functions.dart';
+
+import '../../features/requesteractions/screens/home.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
