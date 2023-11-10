@@ -16,28 +16,28 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: NavigationBar(
-            elevation: 0,
-            //selectedIndex: controller.selectedIndex.value,
-            //onDestinationSelected: (index) => controller.selectedIndex.value = index,
-            destinations: const [
-              NavigationDestination(
-                icon: Icon(Iconsax.home),
-                selectedIcon: Icon(Iconsax.home_15),
-                label: "",
-              ),
-              NavigationDestination(
-                icon: Icon(Iconsax.clock),
-                selectedIcon: Icon(Icons.history),
-                label: "History",
-              ),
-              NavigationDestination(
-                icon: Icon(Iconsax.frame_1),
-                selectedIcon: Icon(Icons.person),
-                label: "Profile",
-              ),
-            ],
-          ),
+        //bottomNavigationBar: NavigationBar(
+        //    elevation: 0,
+        //    //selectedIndex: controller.selectedIndex.value,
+        //    //onDestinationSelected: (index) => controller.selectedIndex.value = index,
+        //    destinations: const [
+        //      NavigationDestination(
+        //        icon: Icon(Iconsax.home),
+        //        selectedIcon: Icon(Iconsax.home_15),
+        //        label: "Home",
+        //      ),
+        //      NavigationDestination(
+        //        icon: Icon(Iconsax.clock),
+        //        selectedIcon: Icon(Icons.history),
+        //        label: "History",
+        //      ),
+        //      NavigationDestination(
+        //        icon: Icon(Iconsax.frame_1),
+        //        selectedIcon: Icon(Icons.person),
+        //        label: "Profile",
+        //      ),
+        //    ],
+        //  ),
       body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),

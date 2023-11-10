@@ -16,8 +16,7 @@ dependencies:
 
   # Utility Packages
   google_fonts: ^6.1.0
-  flutter_svg: ^0.23.0+1
-  flutter_native_splash: ^2.2.0+1
+  flutter_native_splash: ^2.3.5
 
   # Icons
   cupertino_icons: ^1.0.2

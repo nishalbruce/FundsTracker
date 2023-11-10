@@ -18,11 +18,9 @@ class _HistoryState extends State<History> {
           title: const Text(
             "History",
             style: TextStyle(
-              color: Colors.black,
             ),
             textAlign: TextAlign.center,
           ),
-          backgroundColor: Colors.white,
         ),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -32,7 +30,6 @@ class _HistoryState extends State<History> {
               const Text(
                 "All Requests",
                 style: TextStyle(
-                    color: Colors.black,
                     fontSize: 24,
                     fontWeight: FontWeight.w700),
               ),
@@ -42,7 +39,6 @@ class _HistoryState extends State<History> {
               const Text(
                 "Filter by",
                 style: TextStyle(
-                    color: Colors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.w400),
               ),

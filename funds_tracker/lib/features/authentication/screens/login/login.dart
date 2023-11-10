@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:funds_tracker/common/widgets/navigation_menu.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:get/get.dart';
 import 'package:funds_tracker/common/styles/spacing_styles.dart';
@@ -112,13 +113,8 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(
-                              context, "/home"
-                          );
-                          //Get.to(const Home());
-                        },
-                        child: const Text("Sign In"),
+                        onPressed: () => Get.to(() => const NavigationMenu()),
+                        child: const Text("Validate"),
                       ),
                     )
                   ],
