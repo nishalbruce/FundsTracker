@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:funds_tracker/features/requesteractions/screens/history.dart';
 import 'package:funds_tracker/features/requesteractions/screens/request.dart';
 import 'package:get/get.dart';
 import 'package:funds_tracker/utils/constants/sizes.dart';
@@ -61,7 +62,7 @@ class _HomeState extends State<Home> {
                 ),
 
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () => Get.to(() => const History()),
                     child:
                     const Row(
                       children: [

@@ -58,6 +58,13 @@ class _ProfileState extends State<ProfileApprover> {
 
                 SizedBox(
                   child: ElevatedButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                        ),
+                      ),
+                    ),
                     onPressed: () => Get.to(() => const LoginScreen()),
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
