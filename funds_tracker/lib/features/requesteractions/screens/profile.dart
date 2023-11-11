@@ -71,7 +71,7 @@ class _ProfileState extends State<Profile> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Iconsax.logout),
-                      SizedBox(width: 10),
+                      SizedBox(width: 10,height: 10),
                       Text("Logout"),
                     ],
                   ),

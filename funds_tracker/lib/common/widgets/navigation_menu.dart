@@ -24,21 +24,22 @@ class NavigationMenu extends StatelessWidget {
           onDestinationSelected: (index) => controller.selectedIndex.value = index,
           backgroundColor: darkMode ? FColors.black : FColors.white,
           indicatorColor: darkMode ? FColors.white.withOpacity(0.1) : FColors.black.withOpacity(0.1),
+          shadowColor: Colors.grey,
 
           destinations: const [
             NavigationDestination(
               icon: Icon(Iconsax.home),
-              selectedIcon: Icon(Iconsax.home_15),
+              selectedIcon: Icon(Iconsax.home_15, color: Color(0xFF40A6DD)),
               label: "Home",
             ),
             NavigationDestination(
               icon: Icon(Icons.history),
-              selectedIcon: Icon(Icons.history),
+              selectedIcon: Icon(Icons.history, color: Color(0xFF40A6DD)),
               label: "History",
             ),
             NavigationDestination(
               icon: Icon(Iconsax.frame_1),
-              selectedIcon: Icon(Iconsax.frame5),
+              selectedIcon: Icon(Iconsax.frame5, color: Color(0xFF40A6DD)),
               label: "Profile",
             ),
           ],
