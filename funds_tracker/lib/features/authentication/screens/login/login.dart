@@ -21,10 +21,9 @@ class LoginScreen extends StatelessWidget {
         child: Padding(
             padding: FSpacingStyle.paddingWithAppBarHeight,
           child: Column(
-
             children: [
               const SizedBox(
-                height: 100,
+                height: 50,
               ),
               // Logo
               const Column(
@@ -33,12 +32,33 @@ class LoginScreen extends StatelessWidget {
                   Image(
                     height: 70,
                     image: AssetImage(FImages.appLogo),
-                  )
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Funds Tracker",
+                    style: TextStyle(
+                        color: FColors.primary
+                    ),
+                  ),
                 ],
               ),
 
               const SizedBox(
                 height: 50,
+              ),
+
+              const Text(
+                  "Authentication",
+                style: TextStyle(
+                  fontSize: FSizes.fontSizeXl,
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+
+              const SizedBox(
+                height: 20,
               ),
 
               // Form

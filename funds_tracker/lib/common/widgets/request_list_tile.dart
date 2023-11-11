@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:funds_tracker/features/requesteractions/screens/view_request.dart';
+import 'package:get/get.dart';
 
 class RequestListTile extends StatefulWidget {
   //final requestName;
@@ -24,7 +26,7 @@ class _RequestListTileState extends State<RequestListTile> {
         Padding(
           padding: const EdgeInsets.only(bottom: 12.0),
           child: GestureDetector(
-            onTap: (){},
+            onTap: ()=> Get.to(() => const ViewRequest()),
             child: Container(
               decoration: BoxDecoration(
                   border: Border.all(
