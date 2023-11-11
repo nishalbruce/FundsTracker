@@ -18,6 +18,7 @@ class _ProfileState extends State<ProfileApprover> {
         appBar: AppBar(
           elevation: 1,
           centerTitle: true,
+          automaticallyImplyLeading: false,
           title: const Text(
             "Profile",
             style: TextStyle(

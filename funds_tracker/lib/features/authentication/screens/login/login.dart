@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:funds_tracker/common/widgets/navigation_menu_approver.dart';
+import '../../../../common/widgets/navigation_menu_approver.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:get/get.dart';
 import 'package:funds_tracker/common/styles/spacing_styles.dart';
 import 'package:funds_tracker/utils/constants/colors.dart';
 import 'package:funds_tracker/utils/constants/image_strings.dart';
 import 'package:funds_tracker/utils/constants/sizes.dart';
-
 import '../../../../common/widgets/navigation_menu.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 

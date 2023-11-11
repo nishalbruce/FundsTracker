@@ -14,6 +14,7 @@ class _HistoryState extends State<History> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
+          automaticallyImplyLeading: false,
           elevation: 1,
           title: const Text(
             "History",
