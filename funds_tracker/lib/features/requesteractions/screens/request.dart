@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:funds_tracker/features/requesteractions/screens/home.dart';
 import 'package:funds_tracker/utils/constants/colors.dart';
 import 'package:get/get.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:date_field/date_field.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -208,14 +209,34 @@ class _RequestState extends State<Request> {
                         height: FSizes.spaceBtwSections
                     ),
 
-                    // Sign In Button
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () => Get.to(() => const Home()),
-                        child: const Text("Submit"),
-                        ),
+                    // Submit Button
+                    AnimatedButton(
+                      text: 'Submit',
+                      buttonTextStyle: const TextStyle(
+                          fontSize: FSizes.fontSizeSm
                       ),
+                      color: FColors.primary,
+                      borderRadius: BorderRadius.circular(10),
+                      pressEvent: () {
+                        AwesomeDialog(
+                          context: context,
+                          animType: AnimType.topSlide,
+                          headerAnimationLoop: false,
+                          dialogType: DialogType.success,
+                          showCloseIcon: true,
+                          closeIcon: const Icon(Icons.cancel_outlined),
+                          desc:
+                          'Request successfully submitted',
+                          btnOkOnPress: () {
+                            debugPrint('OnClick');
+                          },
+                          btnOkIcon: Icons.check_circle,
+                          onDismissCallback: (type) {
+                            debugPrint('Dialog Dissmiss from callback $type');
+                          },
+                        ).show();
+                      },
+                    ),
                   ],
                 ),
               ))
