@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:funds_tracker/utils/constants/colors.dart';
 import '../../../utils/constants/image_strings.dart';
 
 class ViewRequest extends StatefulWidget {
@@ -21,115 +22,126 @@ class _ViewRequestState extends State<ViewRequest> {
             style: TextStyle(),
           ),
         ),
-        body: const Padding(
-          padding: EdgeInsets.all(20.0),
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: (50), // Image radius
                   backgroundImage: AssetImage(FImages.profile),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Column(
                   children: [
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Requester Name: "),
                         Text("Alain Bruce"),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(thickness: 0.5),
-                    SizedBox(
+                    const Divider(thickness: 0.5),
+                    const SizedBox(
                       height: 5,
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Requester Type: "),
                         Text("Transport"),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(thickness: 0.5),
-                    SizedBox(
+                    const Divider(thickness: 0.5),
+                    const SizedBox(
                       height: 5,
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Description: "),
                         Text("Lorem ipsum"),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(thickness: 0.5),
-                    SizedBox(
+                    const Divider(thickness: 0.5),
+                    const SizedBox(
                       height: 5,
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Amount: "),
                         Text("30.000"),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(thickness: 0.5),
-                    SizedBox(
+                    const Divider(thickness: 0.5),
+                    const SizedBox(
                       height: 5,
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Date: "),
                         Text("20/12/2023"),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(thickness: 0.5),
-                    SizedBox(
+                    const Divider(thickness: 0.5),
+                    const SizedBox(
                       height: 5,
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Paid by: "),
                         Text("ACLIS"),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(thickness: 0.5),
-                    SizedBox(
+                    const Divider(thickness: 0.5),
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Status: "),
-                        Text("Pending"),
+                        const Text("Status: "),
+                        Container(
+                          padding: const EdgeInsets.fromLTRB(20,10,20,10),
+                          decoration: BoxDecoration(
+                            color: FColors.orangeTertiary,
+                            borderRadius: BorderRadius.circular(20)
+                          ),
+                          child: const Text(
+                            "Pending",
+                            style: TextStyle(
+                            color: FColors.orangePrimary,
+                          ),),
+                        ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    Divider(thickness: 0.5),
+                    const Divider(thickness: 0.5),
                   ],
                 )
               ],

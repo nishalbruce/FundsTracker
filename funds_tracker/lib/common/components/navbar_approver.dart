@@ -30,9 +30,14 @@ class NavBarApprover extends StatelessWidget {
               selectedIcon: Icon(Iconsax.element_45, color: Color(0xFF40A6DD)),
               label: "Dashboard",
             ),
+            //NavigationDestination(
+            //  icon: Icon(Iconsax.diagram),
+            //  selectedIcon: Icon(Iconsax.diagram, color: Color(0xFF40A6DD)),
+            //  label: "Statistics",
+            //),
             NavigationDestination(
-              icon: Icon(Iconsax.diagram),
-              selectedIcon: Icon(Iconsax.diagram, color: Color(0xFF40A6DD)),
+              icon: Icon(Iconsax.graph),
+              selectedIcon: Icon(Iconsax.graph5, color: Color(0xFF40A6DD)),
               label: "Statistics",
             ),
             NavigationDestination(
