@@ -67,7 +67,7 @@ class _RequestState extends State<Request> {
                         // Add more decoration..
                       ),
                       hint: const Text(
-                        'Select The Request Category',
+                        'Select the request type',
                         style: TextStyle(fontSize: 14),
                       ),
                       items: requestCategory
@@ -83,7 +83,7 @@ class _RequestState extends State<Request> {
                           .toList(),
                       validator: (value) {
                         if (value == null) {
-                          return 'Please select the request category.';
+                          return 'Please select the request typr.';
                         }
                         return null;
                       },
@@ -98,7 +98,7 @@ class _RequestState extends State<Request> {
                       ),
                       iconStyleData: const IconStyleData(
                         icon: Icon(
-                          Iconsax.arrow_circle_down
+                          Iconsax.arrow_circle_down,
                         ),
                         iconSize: 24,
                       ),
@@ -183,7 +183,11 @@ class _RequestState extends State<Request> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text("Payed by: "),
+                        const Text(
+                          "Payed by: ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500),
+                        ),
                         RadioGroup(
                           controller: myController,
                           values: const ["Me", "ACLIS"],
@@ -192,7 +196,9 @@ class _RequestState extends State<Request> {
                           decoration: const RadioGroupDecoration(
                             spacing: 10.0,
                             splashRadius: 20,
-                            activeColor: FColors.primary,
+                            focusColor: Colors.red,
+                            fillColor: MaterialStatePropertyAll<Color?>(FColors.primary),
+                            //activeColor: FColors.primary
                           ),
                         ),
                       ],

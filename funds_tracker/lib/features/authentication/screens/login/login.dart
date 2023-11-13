@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../../../common/widgets/navigation_menu_approver.dart';
+import '../../../../common/components/navbar_approver.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:get/get.dart';
 import 'package:funds_tracker/common/styles/spacing_styles.dart';
 import 'package:funds_tracker/utils/constants/colors.dart';
 import 'package:funds_tracker/utils/constants/image_strings.dart';
 import 'package:funds_tracker/utils/constants/sizes.dart';
-import '../../../../common/widgets/navigation_menu.dart';
+import '../../../../common/components/navbar.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -133,7 +133,7 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () => Get.to(() => const NavigationMenu()),
+                        onPressed: () => Get.to(() => const NavBar()),
                         child: const Text("Validate"),
                       ),
                     ),
@@ -145,7 +145,7 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () => Get.to(() => const NavigationMenuApprover()),
+                        onPressed: () => Get.to(() => const NavBarApprover()),
                         child: const Text("Go To Approver"),
                       ),
                     )

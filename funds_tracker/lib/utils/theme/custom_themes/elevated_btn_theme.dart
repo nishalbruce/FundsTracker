@@ -6,6 +6,7 @@ class FElevatedBtnTheme {
   static final lightElevatedBtnTheme = ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         elevation: 0,
+        fixedSize: const Size.fromHeight(40),
         foregroundColor: Colors.white,
         backgroundColor: const Color(0xFF40A6DD),
         disabledForegroundColor: Colors.grey,
@@ -13,7 +14,6 @@ class FElevatedBtnTheme {
         side: const BorderSide(
             color: Color(0xFF40A6DD)
         ),
-        padding: const EdgeInsets.symmetric(vertical: 18),
         textStyle: const TextStyle(
           fontSize: 16,
           color: Colors.white,
@@ -21,9 +21,9 @@ class FElevatedBtnTheme {
           fontWeight: FontWeight.w600,
         ),
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10)
-        )
-      )
+            borderRadius: BorderRadius.circular(10),
+        ),
+      ),
   );
 
 
@@ -32,11 +32,11 @@ class FElevatedBtnTheme {
   static final darkElevatedBtnTheme = ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
           elevation: 0,
+          fixedSize: const Size.fromHeight(40),
           foregroundColor: Colors.white,
           backgroundColor: const Color(0xFF40A6DD),
           disabledForegroundColor: Colors.grey,
           disabledBackgroundColor: Colors.grey,
-          padding: const EdgeInsets.symmetric(vertical: 15),
           textStyle: const TextStyle(
             fontSize: 16,
             fontFamily: "Lexend",
@@ -45,7 +45,7 @@ class FElevatedBtnTheme {
           ),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
-          )
-      )
+          ),
+      ),
   );
 }

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:funds_tracker/features/approveractions/screens/dashboard.dart';
+import 'package:funds_tracker/features/approveractions/screens/profile.dart';
+import 'package:funds_tracker/features/approveractions/screens/statistics.dart';
 import 'package:funds_tracker/utils/constants/colors.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:funds_tracker/features/requesteractions/screens/history.dart';
-import 'package:funds_tracker/features/requesteractions/screens/profile.dart';
 import 'package:funds_tracker/utils/helpers/helper_functions.dart';
 
-import '../../features/requesteractions/screens/home.dart';
-
-class NavigationMenu extends StatelessWidget {
-  const NavigationMenu({super.key});
+class NavBarApprover extends StatelessWidget {
+  const NavBarApprover({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +26,14 @@ class NavigationMenu extends StatelessWidget {
 
           destinations: const [
             NavigationDestination(
-              icon: Icon(Iconsax.home),
-              selectedIcon: Icon(Iconsax.home_15, color: Color(0xFF40A6DD)),
-              label: "Home",
+              icon: Icon(Iconsax.element_44),
+              selectedIcon: Icon(Iconsax.element_45, color: Color(0xFF40A6DD)),
+              label: "Dashboard",
             ),
             NavigationDestination(
-              icon: Icon(Icons.history),
-              selectedIcon: Icon(Icons.history, color: Color(0xFF40A6DD)),
-              label: "History",
+              icon: Icon(Iconsax.diagram),
+              selectedIcon: Icon(Iconsax.diagram, color: Color(0xFF40A6DD)),
+              label: "Statistics",
             ),
             NavigationDestination(
               icon: Icon(Iconsax.frame_1),
@@ -54,8 +53,8 @@ class NavigationController extends GetxController{
   final Rx<int> selectedIndex = 0.obs;
 
   final screens = [
-    const Home(),
-    const History(),
-    const Profile(),
+    const Dashboard(),
+    const Statistics(),
+    const ProfileApprover(),
   ];
 }

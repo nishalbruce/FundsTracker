@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:funds_tracker/features/approveractions/screens/approved_request.dart';
+import 'package:funds_tracker/features/approveractions/screens/pending_request.dart';
+import 'package:funds_tracker/features/approveractions/screens/rejected_request.dart';
 import 'package:iconsax/iconsax.dart';
-
-import '../../../common/widgets/request_list_tile.dart';
+import 'package:get/get.dart';
+import '../../../common/components/request_list_tile.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -54,7 +57,7 @@ class _DashboardState extends State<Dashboard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: (){},
+                    onTap: ()=> Get.to(() => const PendingRequests()),
                     child: Container(
                       width: 165,
                       decoration: BoxDecoration(
@@ -87,7 +90,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
 
                   GestureDetector(
-                    onTap: (){},
+                    onTap: ()=> Get.to(() => const ApprovedRequests()),
                     child: Container(
                       decoration: BoxDecoration(
                         color: const Color(0x2B17D72A),
@@ -127,7 +130,7 @@ class _DashboardState extends State<Dashboard> {
               Column(
                 children: [
                   GestureDetector(
-                    onTap: (){},
+                    onTap: ()=> Get.to(() => const RejectedRequests()),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),

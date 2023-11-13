@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
+import '../../../common/components/pending_request_list_tile.dart';
 import '../../../common/components/request_list_tile.dart';
 
-class History extends StatefulWidget {
-  const History({super.key});
+class PendingRequests extends StatefulWidget {
+  const PendingRequests({super.key});
 
   @override
-  State<History> createState() => _HistoryState();
+  State<PendingRequests> createState() => _PendingRequestsState();
 }
 
-class _HistoryState extends State<History> {
+class _PendingRequestsState extends State<PendingRequests> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          centerTitle: true,
-          automaticallyImplyLeading: false,
+          centerTitle: false,
           elevation: 1,
           title: const Text(
-            "History",
+            "Pending Request",
             style: TextStyle(
             ),
             textAlign: TextAlign.center,
@@ -28,12 +28,6 @@ class _HistoryState extends State<History> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "All Requests",
-                style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700),
-              ),
               const SizedBox(
                 height: 10,
               ),
@@ -53,17 +47,16 @@ class _HistoryState extends State<History> {
               Expanded(
                 child: ListView(
                   children: const [
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
+                    PendingRequestListTile(),
+                    PendingRequestListTile(),
+                    PendingRequestListTile(),
+                    PendingRequestListTile(),
+                    PendingRequestListTile(),
+                    PendingRequestListTile(),
+                    PendingRequestListTile(),
+                    PendingRequestListTile(),
+                    PendingRequestListTile(),
+                    PendingRequestListTile(),
                   ],
                 ),
               )

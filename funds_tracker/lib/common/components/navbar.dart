@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:funds_tracker/features/approveractions/screens/dashboard.dart';
-import 'package:funds_tracker/features/approveractions/screens/profile.dart';
-import 'package:funds_tracker/features/approveractions/screens/statistics.dart';
 import 'package:funds_tracker/utils/constants/colors.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:funds_tracker/features/requesteractions/screens/history.dart';
+import 'package:funds_tracker/features/requesteractions/screens/profile.dart';
 import 'package:funds_tracker/utils/helpers/helper_functions.dart';
 
-class NavigationMenuApprover extends StatelessWidget {
-  const NavigationMenuApprover({super.key});
+import '../../features/requesteractions/screens/home.dart';
+
+class NavBar extends StatelessWidget {
+  const NavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +27,18 @@ class NavigationMenuApprover extends StatelessWidget {
 
           destinations: const [
             NavigationDestination(
-              icon: Icon(Iconsax.element_4),
-              selectedIcon: Icon(Iconsax.element_45),
-              label: "Dashboard",
+              icon: Icon(Iconsax.home),
+              selectedIcon: Icon(Iconsax.home_15, color: Color(0xFF40A6DD)),
+              label: "Home",
             ),
             NavigationDestination(
-              icon: Icon(Iconsax.diagram),
-              selectedIcon: Icon(Iconsax.diagram),
-              label: "Statistics",
+              icon: Icon(Icons.history),
+              selectedIcon: Icon(Icons.history, color: Color(0xFF40A6DD)),
+              label: "History",
             ),
             NavigationDestination(
               icon: Icon(Iconsax.frame_1),
-              selectedIcon: Icon(Iconsax.frame5),
+              selectedIcon: Icon(Iconsax.frame5, color: Color(0xFF40A6DD)),
               label: "Profile",
             ),
           ],
@@ -53,8 +54,8 @@ class NavigationController extends GetxController{
   final Rx<int> selectedIndex = 0.obs;
 
   final screens = [
-    const Dashboard(),
-    const Statistics(),
-    const ProfileApprover(),
+    const Home(),
+    const History(),
+    const Profile(),
   ];
 }

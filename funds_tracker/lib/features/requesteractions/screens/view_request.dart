@@ -15,6 +15,7 @@ class _ViewRequestState extends State<ViewRequest> {
     return Scaffold(
         appBar: AppBar(
           elevation: 1,
+          centerTitle: false,
           title: const Text(
             "Request #1",
             style: TextStyle(),

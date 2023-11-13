@@ -17,7 +17,6 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
-        centerTitle: true,
         automaticallyImplyLeading: false,
         title: const Text(
             "Profile",
@@ -71,7 +70,7 @@ class _ProfileState extends State<Profile> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Iconsax.logout),
-                      SizedBox(width: 10,height: 10),
+                      SizedBox(width: 10),
                       Text("Logout"),
                     ],
                   ),

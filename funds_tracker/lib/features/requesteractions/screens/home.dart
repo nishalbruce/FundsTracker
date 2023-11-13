@@ -4,7 +4,7 @@ import 'package:funds_tracker/features/requesteractions/screens/request.dart';
 import 'package:get/get.dart';
 import 'package:funds_tracker/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../common/widgets/request_list_tile.dart';
+import '../../../common/components/request_list_tile.dart';
 
 
 class Home extends StatefulWidget {
@@ -34,9 +34,13 @@ class _HomeState extends State<Home> {
                           fontWeight: FontWeight.w500),
                     ),
 
-                    Icon(
-                      Iconsax.notification_bing5,
-                    ),
+                    Icon(Iconsax.notification_bing5),
+
+                    //IconButton(
+                    //  icon: Icon(Iconsax.notification_bing5),
+                    //  onPressed: () {},
+                    //
+                    //),
                   ],
                 ),
                 const SizedBox(
@@ -69,13 +73,13 @@ class _HomeState extends State<Home> {
                         Text(
                           "View All",
                           style: TextStyle(
-                            decoration: TextDecoration.underline,
                             color: Color(0xFF40A6DD),
                             fontSize: FSizes.fontSizeSm,
                           ),
                         ),
+                        SizedBox(width: 5,),
                         Icon(
-                            Icons.arrow_forward_ios_rounded,
+                            Iconsax.arrow_right_1,
                           size: 12,
                           color: Color(0xFF40A6DD)
                         )

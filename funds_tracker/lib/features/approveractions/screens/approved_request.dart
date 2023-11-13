@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import '../../../common/components/request_list_tile.dart';
 
-class History extends StatefulWidget {
-  const History({super.key});
+class ApprovedRequests extends StatefulWidget {
+  const ApprovedRequests({super.key});
 
   @override
-  State<History> createState() => _HistoryState();
+  State<ApprovedRequests> createState() => _ApprovedRequestsState();
 }
 
-class _HistoryState extends State<History> {
+class _ApprovedRequestsState extends State<ApprovedRequests> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          centerTitle: true,
-          automaticallyImplyLeading: false,
+          centerTitle: false,
           elevation: 1,
           title: const Text(
-            "History",
+            "Approved Requests",
             style: TextStyle(
             ),
             textAlign: TextAlign.center,
@@ -28,12 +27,6 @@ class _HistoryState extends State<History> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "All Requests",
-                style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700),
-              ),
               const SizedBox(
                 height: 10,
               ),
