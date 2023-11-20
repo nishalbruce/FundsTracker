@@ -23,6 +23,15 @@
       <excludeFolder url="file://$MODULE_DIR$/funds_tracker/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/funds_tracker/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/funds_tracker/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/funds_tracker/windows/flutter/ephemeral/.plugin_symlinks/rive_common/build" />
+      <excludeFolder url="file://$MODULE_DIR$/funds_tracker/windows/flutter/ephemeral/.plugin_symlinks/rive_common/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/funds_tracker/windows/flutter/ephemeral/.plugin_symlinks/rive_common/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/funds_tracker/windows/flutter/ephemeral/.plugin_symlinks/rive_common/macos/rive-cpp/dev/core_generator/build" />
+      <excludeFolder url="file://$MODULE_DIR$/funds_tracker/windows/flutter/ephemeral/.plugin_symlinks/rive_common/macos/rive-cpp/dev/core_generator/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/funds_tracker/windows/flutter/ephemeral/.plugin_symlinks/rive_common/macos/rive-cpp/dev/core_generator/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/funds_tracker/windows/flutter/ephemeral/.plugin_symlinks/rive_common/ios/rive-cpp/dev/core_generator/build" />
+      <excludeFolder url="file://$MODULE_DIR$/funds_tracker/windows/flutter/ephemeral/.plugin_symlinks/rive_common/ios/rive-cpp/dev/core_generator/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/funds_tracker/windows/flutter/ephemeral/.plugin_symlinks/rive_common/ios/rive-cpp/dev/core_generator/.pub" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 34, extension level 7 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

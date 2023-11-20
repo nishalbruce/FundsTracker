@@ -86,44 +86,44 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(
-                        height: FSizes.spaceBtwInputFields / 2
-                    ),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Remember Me
-                        Row(
-                          children: [
-                            Checkbox(
-                                value: true,
-                                onChanged: (value){},
-                              activeColor: FColors.primary,
-                            ),
-                            const Text(
-                                "Remember Me",
-                              style: TextStyle(
-                                fontSize: FSizes.fontSizeXs,
-                              ),
-                            )
-                          ],
-                        ),
-
-                        //Forgot Password
-                        TextButton(
-                          onPressed: (){},
-                          child: const Text(
-                              "Forgot Password",
-                            style: TextStyle(
-                              fontSize: FSizes.fontSizeXs,
-                              color: FColors.primary,
-                            ),
-                          ),
-
-                        )
-                      ],
-                    ),
+                    //const SizedBox(
+                    //    height: FSizes.spaceBtwInputFields / 2
+                    //),
+//
+                    //Row(
+                    //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //  children: [
+                    //    // Remember Me
+                    //    Row(
+                    //      children: [
+                    //        Checkbox(
+                    //            value: true,
+                    //            onChanged: (value){},
+                    //          activeColor: FColors.primary,
+                    //        ),
+                    //        const Text(
+                    //            "Remember Me",
+                    //          style: TextStyle(
+                    //            fontSize: FSizes.fontSizeXs,
+                    //          ),
+                    //        )
+                    //      ],
+                    //    ),
+//
+                    //    //Forgot Password
+                    //    TextButton(
+                    //      onPressed: (){},
+                    //      child: const Text(
+                    //          "Forgot Password",
+                    //        style: TextStyle(
+                    //          fontSize: FSizes.fontSizeXs,
+                    //          color: FColors.primary,
+                    //        ),
+                    //      ),
+//
+                    //    )
+                    //  ],
+                    //),
 
                     const SizedBox(
                         height: FSizes.spaceBtwSections

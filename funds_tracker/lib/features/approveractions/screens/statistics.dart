@@ -28,55 +28,43 @@ class _StatisticsState extends State<Statistics> {
             child: Center(
               child: Column(
                 children: [
+                  const Text("Ranks by Request type"),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   SizedBox(
                     width: 250,
                     height: 250,
                     child: PieChart(
                       PieChartData(
                         borderData: FlBorderData(show: false),
-                        sectionsSpace: 3,
+                        //centerSpaceRadius: 0,
+                        sectionsSpace: 2,
                         sections: [
-                          PieChartSectionData(value: 35, color: Colors.grey, title: "Transport", radius: 75),
-                          PieChartSectionData(value: 40, color: Colors.blueAccent, title: "Dishes", radius: 40),
-                          PieChartSectionData(value: 55, color: Colors.red, title: "Airtime", radius: 55),
-                          PieChartSectionData(value: 70, color: Colors.orange, title: "Snacks", radius: 70),
+                          PieChartSectionData(value: 35, color: Colors.grey, title: "Transport", radius: 60),
+                          PieChartSectionData(value: 40, color: Colors.blueAccent, title: "Dishes", radius:70),
+                          PieChartSectionData(value: 55, color: Colors.red, title: "Airtime", radius: 80),
+                          PieChartSectionData(value: 70, color: Colors.orange, title: "Snacks", radius: 100),
                         ]
                       ),
                     ),
                   ),
-
-                  SizedBox(
-                    width: 250,
-                    height: 250,
-                    child: PieChart(
-                      PieChartData(
-                          borderData: FlBorderData(show: false),
-                          sectionsSpace: 3,
-                          sections: [
-                            PieChartSectionData(value: 35, color: Colors.grey, title: "Transport", radius: 75),
-                            PieChartSectionData(value: 40, color: Colors.blueAccent, title: "Dishes", radius: 40),
-                            PieChartSectionData(value: 55, color: Colors.red, title: "Airtime", radius: 55),
-                            PieChartSectionData(value: 70, color: Colors.orange, title: "Snacks", radius: 70),
-                          ]
-                      ),
-                    ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  const Text("Monthly based statistics"),
+                  const SizedBox(
+                    height: 30,
                   ),
 
                   SizedBox(
-                    width: 250,
                     height: 250,
-                    child: PieChart(
-                      PieChartData(
-                          borderData: FlBorderData(show: false),
-                          sectionsSpace: 3,
-                          sections: [
-                            PieChartSectionData(value: 35, color: Colors.grey, title: "Transport", radius: 75),
-                            PieChartSectionData(value: 40, color: Colors.blueAccent, title: "Dishes", radius: 40),
-                            PieChartSectionData(value: 55, color: Colors.red, title: "Airtime", radius: 55),
-                            PieChartSectionData(value: 70, color: Colors.orange, title: "Snacks", radius: 70),
-                          ]
-                      ),
-                    ),
+                    child: BarChart(
+                      BarChartData(
+                        maxY: 100,
+                        minY: 0,
+                      )
+                    )
                   ),
                 ],
               ),

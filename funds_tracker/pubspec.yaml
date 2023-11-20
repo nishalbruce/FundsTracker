@@ -24,12 +24,15 @@ dependencies:
 
   # State Management
   get: ^4.6.6
+
+  #Other packages
   date_field: ^3.0.5
   dropdown_button2: ^2.3.9
   radio_group_v2: ^2.1.3
   badges: ^3.1.2
   awesome_dialog: ^3.1.0
   fl_chart: ^0.64.0
+  firebase_core: ^2.22.0
 
 #------------------- PACKAGES END ----------------#
 

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "581466079756",
+    "project_id": "funds-tracker-aclis",
+    "storage_bucket": "funds-tracker-aclis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581466079756:android:713d355e6fda0f2b2c2429",
+        "android_client_info": {
+          "package_name": "com.example.funds_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "581466079756-8imuc8f7kjnjmdh9p2j6p1q1upu0ahqc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrP9lsHooD6036h2_tnHr6nUK5g0IFcjE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "581466079756-8imuc8f7kjnjmdh9p2j6p1q1upu0ahqc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
