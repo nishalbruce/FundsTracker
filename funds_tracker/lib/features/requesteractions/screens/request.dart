@@ -149,6 +149,8 @@ class _RequestState extends State<Request> {
                     ),
 
                     TextFormField(
+                      minLines: 1,
+                      maxLines: 10,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(Iconsax.more),
                         labelText: "Description",

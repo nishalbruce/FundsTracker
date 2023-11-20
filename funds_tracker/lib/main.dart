@@ -17,6 +17,9 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform
   );
 
+  await Future.delayed(const Duration(seconds: 3));
+  FlutterNativeSplash.remove();
+
   runApp(const MyApp());
 }
 
