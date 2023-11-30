@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:funds_tracker/features/authentication/controllers/auth_controller.dart';
 import 'package:funds_tracker/features/authentication/screens/login/login.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../utils/constants/image_strings.dart';
+//import '../../authentication/controllers/firebase_auth_service.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -12,6 +14,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  final AuthController _authController = AuthController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +68,8 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                   ),
-                  onPressed: () => Get.to(() => const LoginScreen()),
+                  //onPressed: () => Get.to(() => const LoginScreen()),
+                  onPressed: _authController.signOut,
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

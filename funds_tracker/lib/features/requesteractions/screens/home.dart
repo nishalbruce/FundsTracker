@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:funds_tracker/features/requesteractions/screens/history.dart';
-import 'package:funds_tracker/features/requesteractions/screens/request.dart';
+import 'package:funds_tracker/features/requesteractions/screens/request_screen.dart';
 import 'package:get/get.dart';
 import 'package:funds_tracker/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';

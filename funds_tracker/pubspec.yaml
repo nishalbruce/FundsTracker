@@ -16,7 +16,7 @@ dependencies:
 
   # Utility Packages
   google_fonts: ^6.1.0
-  flutter_native_splash: ^2.3.5
+  flutter_native_splash: ^2.3.6
 
   # Icons
   cupertino_icons: ^1.0.2
@@ -33,6 +33,8 @@ dependencies:
   awesome_dialog: ^3.1.0
   fl_chart: ^0.64.0
   firebase_core: ^2.22.0
+  firebase_auth: ^4.14.0
+  cloud_firestore: ^4.13.1
 
 #------------------- PACKAGES END ----------------#
 

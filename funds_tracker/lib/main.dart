@@ -7,9 +7,7 @@ import 'package:funds_tracker/features/authentication/screens/login/login.dart';
 import 'package:funds_tracker/utils/theme/theme.dart';
 
 
-
-
-Future<void> main() async {
+void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
@@ -17,7 +15,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform
   );
 
-  await Future.delayed(const Duration(seconds: 3));
+  await Future.delayed(const Duration(seconds: 2));
   FlutterNativeSplash.remove();
 
   runApp(const MyApp());
@@ -34,15 +32,7 @@ class MyApp extends StatelessWidget {
       theme: FAppTheme.lightTheme,
       darkTheme: FAppTheme.darkTheme,
       title: 'Funds Tracker',
-      //home: Splash(),
       home: const LoginScreen(),
-      //routes: {
-      //  "/history" :(context) => const History(),
-      //  "/profile" :(context) => const Profile(),
-      //  "/request" :(context) => const Request(),
-      //  "/home" :(context) => const Home(),
-      //  "/nav" :(context) => const NavigBar(),
-      //},
       debugShowCheckedModeBanner: false,
     );
   }
