@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:funds_tracker/features/requesteractions/controllers/request_controller.dart';
 import 'package:funds_tracker/features/requesteractions/screens/home.dart';
 import 'package:funds_tracker/utils/constants/colors.dart';
 import 'package:get/get.dart';
@@ -20,6 +21,15 @@ class Request extends StatefulWidget {
 class _RequestState extends State<Request> {
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _type = TextEditingController();
+    final TextEditingController _fullName = TextEditingController();
+    final TextEditingController _amount = TextEditingController();
+    final TextEditingController _description = TextEditingController();
+    final TextEditingController _date = TextEditingController();
+    final TextEditingController _payer = TextEditingController();
+    final GlobalKey<RadioGroupState> horizontalGroupKey =
+    GlobalKey<RadioGroupState>();
+    String horizontalValRequested = "";
     final List<String> requestCategory = [
       "Transport",
       "Airtime",
@@ -27,6 +37,7 @@ class _RequestState extends State<Request> {
       "Water"
     ];
     String? selectedValue;
+    DateTime? selectedDate;
     RadioGroupController myController = RadioGroupController();
 
     return Scaffold(
@@ -48,18 +59,19 @@ class _RequestState extends State<Request> {
                 child: Column(
                   children: [
                     //Email
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        enabled: false,
-                        labelText: "Request #",
-                      ),
-                    ),
+                    //TextFormField(
+                    //  decoration: const InputDecoration(
+                    //    enabled: false,
+                    //    labelText: "Request #",
+                    //  ),
+                    //),
 
-                    const SizedBox(
-                        height: FSizes.spaceBtwInputFields
-                    ),
+                    //const SizedBox(
+                    //    height: FSizes.spaceBtwInputFields
+                    //),
 
                     DropdownButtonFormField2<String>(
+
                       isExpanded: true,
                       decoration: const InputDecoration(
                         // Add Horizontal padding using menuItemStyleData.padding so it matches
@@ -84,16 +96,17 @@ class _RequestState extends State<Request> {
                           .toList(),
                       validator: (value) {
                         if (value == null) {
-                          return 'Please select the request typr.';
+                          return 'Please select the request type.';
                         }
                         return null;
                       },
                       onChanged: (value) {
-                        //Do something when selected item is changed.
+                        setState(() {
+                          selectedValue = value.toString();
+                          print(selectedValue);
+                        });
                       },
-                      onSaved: (value) {
-                        selectedValue = value.toString();
-                      },
+                      onSaved: (value) {},
                       buttonStyleData: const ButtonStyleData(
                         padding: EdgeInsets.only(right: 8),
                       ),
@@ -118,6 +131,7 @@ class _RequestState extends State<Request> {
                     ),
 
                     TextFormField(
+                      controller: _fullName,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(Iconsax.frame_1),
                         labelText: "Full Name",
@@ -129,6 +143,7 @@ class _RequestState extends State<Request> {
                     ),
 
                     TextFormField(
+                      controller: _amount,
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
                         FilteringTextInputFormatter.allow(RegExp(r'[0-9]+[,.]{0,1}[0-9]*')),
@@ -149,6 +164,7 @@ class _RequestState extends State<Request> {
                     ),
 
                     TextFormField(
+                      controller: _description,
                       minLines: 1,
                       maxLines: 10,
                       decoration: const InputDecoration(
@@ -162,6 +178,7 @@ class _RequestState extends State<Request> {
                     ),
 
                     DateTimeFormField(
+
                       decoration: const InputDecoration(
                         hintStyle: TextStyle(color: Colors.black45),
                         errorStyle: TextStyle(color: Colors.redAccent),
@@ -172,9 +189,10 @@ class _RequestState extends State<Request> {
                       mode: DateTimeFieldPickerMode.date,
                       autovalidateMode: AutovalidateMode.always,
                       validator: (e) => (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
-                      //onDateSelected: (DateTime value) {
-                      //  print(value);
-                      //},
+                      onDateSelected: (DateTime value) {
+                        selectedDate = value;
+                        print(value);
+                      },
                       firstDate: DateTime(2000),
                       lastDate: DateTime(3000),
                     ),
@@ -191,18 +209,25 @@ class _RequestState extends State<Request> {
                           style: TextStyle(
                               fontWeight: FontWeight.w500),
                         ),
+
                         RadioGroup(
+                         // key: horizontalGroupKey,
                           controller: myController,
                           values: const ["Me", "ACLIS"],
-                          indexOfDefault: 0,
+                          indexOfDefault: -1,
                           orientation: RadioGroupOrientation.horizontal,
                           decoration: const RadioGroupDecoration(
+                            toggleable: true,
                             spacing: 10.0,
                             splashRadius: 20,
-                            focusColor: Colors.red,
-                            fillColor: MaterialStatePropertyAll<Color?>(FColors.primary),
+                            focusColor: Colors.yellow,
+                            fillColor: MaterialStatePropertyAll<Color?>(FColors.primary)
                             //activeColor: FColors.primary
                           ),
+                          onChanged: (newValue) => setState(() {
+                            horizontalValRequested = newValue.toString();
+                            print(horizontalValRequested);
+                          }),
                         ),
                       ],
                     ),
@@ -231,6 +256,14 @@ class _RequestState extends State<Request> {
                           'Request successfully submitted',
                           btnOkOnPress: () {
                             debugPrint('OnClick');
+                            //RequestController.createRequest(
+                            //    selectedValue!,
+                            //    _fullName.text,
+                            //    double.parse(_amount.text).toString(),
+                            //    _description.text,
+                            //    selectedDate.toString(),
+                            //    _payer.text
+                            //);
                           },
                           btnOkIcon: Icons.check_circle,
                           onDismissCallback: (type) {

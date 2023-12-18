@@ -9,6 +9,6 @@ class AuthController {
   }
 
   Future<void> signOut() {
-    return _authService.signOut();
+    return _authService.logOut();
   }
 }

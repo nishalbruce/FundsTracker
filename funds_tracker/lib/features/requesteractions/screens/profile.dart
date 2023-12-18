@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:funds_tracker/features/authentication/controllers/auth_controller.dart';
 import 'package:funds_tracker/features/authentication/screens/login/login.dart';
@@ -15,6 +17,7 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   final AuthController _authController = AuthController();
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +72,12 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                   //onPressed: () => Get.to(() => const LoginScreen()),
-                  onPressed: _authController.signOut,
+                  //onPressed: _authController.signOut,
+                  onPressed: (){
+                    if(firebaseAuth.currentUser != null){
+                      _authController.signOut();
+                    }
+                  },
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

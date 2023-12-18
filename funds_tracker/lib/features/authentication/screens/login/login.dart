@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final AuthController _authController = AuthController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final _formkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   //final _auth = FirebaseAuth.instance;
 
   @override
@@ -90,7 +90,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         labelText: "Email"
                       ),
                       validator: (value) {
-                        if (value!.isEmpty) {
+
+                        if (value== null && value!.isEmpty) {
                           return "Email cannot be empty";
                         }
                         if (!RegExp(
@@ -101,8 +102,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         }
                       },
                       onSaved: (value) {
-                        _emailController.text = value!;
+                        setState(() {
+                          _emailController.text = value!;
+                        });
+                        //print(value);
                       },
+                      //onChanged: (value) {
+                      //  setState(() {
+                      //    _emailController.text = value;
+                      //  });
+                      //  print(_emailController.text);
+                      //},
                       keyboardType: TextInputType.emailAddress,
                     ),
 
@@ -127,18 +137,26 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       validator: (value) {
                         RegExp regex = RegExp(r'^.{6,}$');
-                        if (value!.isEmpty) {
+                        if (value== null && value!.isEmpty) {
                           return "Password cannot be empty";
                         }
                         if (!regex.hasMatch(value)) {
-                          return ("please enter valid password min. 6 character");
+                          return ("Please enter valid password min. 6 character");
                         } else {
                           return null;
                         }
                       },
                       onSaved: (value) {
-                        _passwordController.text = value!;
+                        setState(() {
+                          _passwordController.text = value!;
+                        });
                       },
+                      //onChanged: (value) {
+                      //  setState(() {
+                      //    _passwordController.text = value;
+                      //  });
+                      //  print(value);
+                      //},
                       keyboardType: TextInputType.visiblePassword,
                     ),
 
@@ -189,7 +207,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        //onPressed: () => Get.to(() => const NavBar()),
                           onPressed: validateSignIn,
                         child: const Text("Validate"),
                       ),
@@ -239,17 +256,33 @@ class _LoginScreenState extends State<LoginScreen> {
     FocusScope.of(context).unfocus();
   }
 
+  //void validateSignIn() async {
+  //  String email = _emailController.text.trim();
+  //  String password = _passwordController.text.trim();
+//
+  //  if(email.isNotEmpty && password.isNotEmpty){
+  //    if (_formkey.currentState!.validate()) {
+  //      _authController.signIn(email,password);
+  //    }
+  //    //_authController.signIn(email,password);
+  //    FocusScope.of(context).unfocus();
+  //  }
+  //}
+
   void validateSignIn() async {
     String email = _emailController.text.trim();
     String password = _passwordController.text.trim();
 
-    if(email.isNotEmpty && password.isNotEmpty){
-      if (_formkey.currentState!.validate()) {
-        _authController.signIn(email,password);
-      }
-      FocusScope.of(context).unfocus();
-    }
+    //if (_formkey.currentState != null && email.isNotEmpty && password.isNotEmpty) {
+    //  //if (_formkey.currentState!.validate()) {
+    //  //  _authController.signIn(email, password);
+    //  //}
+    //  _authController.signIn(email, password);
+    //  FocusScope.of(context).unfocus();
+    //}else{print("Hello");}
+    _authController.signIn(email, password);
   }
+
 
   @override
   void dispose() {
