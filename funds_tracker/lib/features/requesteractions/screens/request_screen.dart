@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:funds_tracker/features/requesteractions/controllers/firestore_service.dart';
 import 'package:funds_tracker/features/requesteractions/controllers/request_controller.dart';
 import 'package:funds_tracker/features/requesteractions/screens/home.dart';
 import 'package:funds_tracker/utils/constants/colors.dart';
@@ -19,6 +20,8 @@ class Request extends StatefulWidget {
 }
 
 class _RequestState extends State<Request> {
+
+  final FirestoreService firestoreService = FirestoreService();
   @override
   Widget build(BuildContext context) {
     final TextEditingController _type = TextEditingController();
@@ -130,7 +133,7 @@ class _RequestState extends State<Request> {
                         height: FSizes.spaceBtwInputFields
                     ),
 
-                    TextFormField(
+                    TextField(
                       controller: _fullName,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(Iconsax.frame_1),
@@ -142,7 +145,7 @@ class _RequestState extends State<Request> {
                         height: FSizes.spaceBtwInputFields
                     ),
 
-                    TextFormField(
+                    TextField(
                       controller: _amount,
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
@@ -163,7 +166,7 @@ class _RequestState extends State<Request> {
                         height: FSizes.spaceBtwInputFields
                     ),
 
-                    TextFormField(
+                    TextField(
                       controller: _description,
                       minLines: 1,
                       maxLines: 10,
@@ -245,6 +248,9 @@ class _RequestState extends State<Request> {
                       color: FColors.primary,
                       borderRadius: BorderRadius.circular(10),
                       pressEvent: () {
+                        firestoreService.addRequest(selectedValue.toString(), _fullName.text, _amount.toString() as double, _description.text, selectedDate.toString() as DateTime, myController.toString());
+                        _fullName.clear();
+                        _description.clear();
                         AwesomeDialog(
                           context: context,
                           animType: AnimType.topSlide,
