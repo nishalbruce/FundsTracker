@@ -19,6 +19,7 @@ class FHelperFunctions {
     }else if(value == "Pink"){
       return Colors.pink;
     }
+    return null;
   }
   
   //static void showSnackBar(String message){

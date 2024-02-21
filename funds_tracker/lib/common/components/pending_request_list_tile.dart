@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:funds_tracker/features/approveractions/screens/view_pending_request.dart';
-import 'package:funds_tracker/features/requesteractions/screens/view_request.dart';
 import 'package:get/get.dart';
 
 class PendingRequestListTile extends StatefulWidget {

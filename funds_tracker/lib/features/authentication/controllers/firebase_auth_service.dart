@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:funds_tracker/features/authentication/screens/login/login.dart';
-import 'package:funds_tracker/utils/constants/app_constants.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../../common/components/navbar.dart';
 import '../../../common/components/navbar_approver.dart';
 
@@ -17,21 +15,19 @@ class FirebaseAuthService {
         email: email,
         password: password,
       );
-      if(userCredential != null){
-          await firebaseFirestore.collection("users")
-              .doc(userCredential.user!.uid)
-              .get()
-              .then((DocumentSnapshot documentSnapshot) {
-                var json = documentSnapshot.data() as Map<String, dynamic>;
-                if(json["role"] == "requester"){
-                  Get.offAll(const NavBar());
-                } else {
-                  Get.offAll(const NavBarApprover());
-                }
+        await firebaseFirestore.collection("users")
+            .doc(userCredential.user!.uid)
+            .get()
+            .then((DocumentSnapshot documentSnapshot) {
+              var json = documentSnapshot.data() as Map<String, dynamic>;
+              if(json["role"] == "requester"){
+                Get.offAll(const NavBar());
+              } else {
+                Get.offAll(const NavBarApprover());
               }
-          );
-      }
-    } on FirebaseAuthException catch (e) {
+            }
+        );
+        } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {

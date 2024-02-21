@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../../common/components/navbar_approver.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:get/get.dart';
 import 'package:funds_tracker/common/styles/spacing_styles.dart';
 import 'package:funds_tracker/utils/constants/colors.dart';
 import 'package:funds_tracker/utils/constants/image_strings.dart';
 import 'package:funds_tracker/utils/constants/sizes.dart';
-import '../../../../common/components/navbar.dart';
 import '../../controllers/auth_controller.dart';
 
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../common/components/pending_request_list_tile.dart';
-import '../../../common/components/request_list_tile.dart';
 
 class PendingRequests extends StatefulWidget {
   const PendingRequests({super.key});

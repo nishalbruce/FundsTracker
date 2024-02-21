@@ -1,5 +1,4 @@
 import 'dart:core';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:funds_tracker/features/requesteractions/controllers/firestore_service.dart';
@@ -11,8 +10,6 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:date_field/date_field.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
-//import 'package:radio_group_v2/radio_group_v2.dart';
 import '../../../utils/constants/sizes.dart';
 
 class Request extends StatefulWidget {
@@ -30,13 +27,11 @@ class _RequestState extends State<Request> {
   final List<DropdownMenuItem<String>> typeDropDown = [
     const DropdownMenuItem(value: "Transport", child: Text("Transport")),
     const DropdownMenuItem(value: "Airtime", child: Text("Airtime")),
-    const DropdownMenuItem(value: "Dishes", child: Text("Dishes"))
+    const DropdownMenuItem(value: "Dishes", child: Text("Dishes")),
+    const DropdownMenuItem(value: "Water", child: Text("Water"))
   ];
   @override
   Widget build(BuildContext context) {
-    //final GlobalKey<RadioGroupState> horizontalGroupKey =
-    //GlobalKey<RadioGroupState>();
-    String horizontalValRequested = "";
     final List<String> requestCategory = [
       "Transport",
       "Airtime",
@@ -45,10 +40,8 @@ class _RequestState extends State<Request> {
     ];
     List<String> payerList = ["ACLIS", "Me"];
     String? payerSelected;
-
     String? selectedValue;
     DateTime? selectedDate;
-    //RadioGroupController myController = RadioGroupController();
 
     return Scaffold(
       appBar: AppBar(
@@ -256,8 +249,8 @@ class _RequestState extends State<Request> {
                                   }),
                                   activeColor: Colors.black12,
                                 ),
-                                Text("ACLIS"),
-                                SizedBox(width: 10),
+                                const Text("ACLIS"),
+                                const SizedBox(width: 10),
                                 Radio(
                                   value: payerList[1],
                                   groupValue: payerSelected,
@@ -269,7 +262,7 @@ class _RequestState extends State<Request> {
                                     payerSelected = value;
                                   }),
                                 ),
-                                Text("Me")
+                                const Text("Me")
                               ],
                             ),
                           ],
