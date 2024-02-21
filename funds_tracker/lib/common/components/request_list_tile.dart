@@ -26,16 +26,15 @@ class _RequestListTileState extends State<RequestListTile> {
         Padding(
           padding: const EdgeInsets.only(bottom: 12.0),
           child: GestureDetector(
-            onTap: ()=> Get.to(() => const ViewRequest()),
+            onTap: () => Get.to(() => const ViewRequest()),
             child: Container(
               decoration: BoxDecoration(
                   border: Border.all(
                     color: Colors.grey,
                     width: 0.5,
                   ),
-                  borderRadius: BorderRadius.circular(5)
-              ),
-              height: 57,
+                  borderRadius: BorderRadius.circular(5)),
+              height: 65,
               child: const Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Column(
@@ -44,10 +43,8 @@ class _RequestListTileState extends State<RequestListTile> {
                   children: <Widget>[
                     Text(
                       "Request #1",
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700
-                      ),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                     ),
 
                     //SizedBox(
@@ -58,16 +55,12 @@ class _RequestListTileState extends State<RequestListTile> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                            "12/10/2023",
-                          style: TextStyle(
-                            fontSize: 13.3
-                          ),
+                          "12/10/2023",
+                          style: TextStyle(fontSize: 13.3),
                         ),
                         Text(
                           "02:30 PM",
-                          style: TextStyle(
-                              fontSize: 13.3
-                          ),
+                          style: TextStyle(fontSize: 13.3),
                         ),
                       ],
                     )
