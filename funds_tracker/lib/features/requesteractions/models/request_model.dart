@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class RequestModel {
   final String type;
   final String requesterName;
@@ -35,4 +37,16 @@ class RequestModel {
         "payer": payer,
         "status": status
       };
+
+  factory RequestModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
+    final data = document.data()!;
+    return RequestModel(
+        type: data["type"],
+        requesterName: data["requester"],
+        amount: data["amount"],
+        description: data["description"],
+        date: data["date"],
+        payer: data["payer"]);
+  }
 }
