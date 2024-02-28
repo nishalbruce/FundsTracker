@@ -30,18 +30,24 @@ class _RequestState extends State<Request> {
     const DropdownMenuItem(value: "Dishes", child: Text("Dishes")),
     const DropdownMenuItem(value: "Water", child: Text("Water"))
   ];
+
+  List<String> payerList = ["ACLIS", "Me"];
+
+  List<String> requestCategory = ["Transport", "Airtime", "Dish", "Water"];
+
+  String? payerSelected;
+  String? selectedValue;
+  DateTime? selectedDate;
+
+  void clear() {
+    requestController.fullName.clear();
+    requestController.amount.clear();
+    requestController.description.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final List<String> requestCategory = [
-      "Transport",
-      "Airtime",
-      "Dish",
-      "Water"
-    ];
-    List<String> payerList = ["ACLIS", "Me"];
-    String? payerSelected;
-    String? selectedValue;
-    DateTime? selectedDate;
+    Get.put(FirestoreService());
 
     return Scaffold(
       appBar: AppBar(
@@ -64,29 +70,16 @@ class _RequestState extends State<Request> {
                         vertical: FSizes.spaceBtwSections),
                     child: Column(
                       children: [
-                        //Email
-                        //TextFormField(
-                        //  decoration: const InputDecoration(
-                        //    enabled: false,
-                        //    labelText: "Request #",
-                        //  ),
-                        //),
-
-                        //const SizedBox(
-                        //    height: FSizes.spaceBtwInputFields
-                        //),
-
                         DropdownButtonFormField(
                           decoration: const InputDecoration(
-                              contentPadding: EdgeInsets.all(16)
-                              //contentPadding: EdgeInsets.symmetric(vertical: 16),
-                              // Add more decoration..
-                              ),
+                            contentPadding: EdgeInsets.all(16),
+                          ),
                           items: typeDropDown,
                           value: selectedValue,
                           onChanged: (value) {
                             setState(() {
                               selectedValue = value;
+                              print(selectedValue);
                             });
                           },
                           hint: const Text(
@@ -105,64 +98,9 @@ class _RequestState extends State<Request> {
                           isExpanded: true,
                         ),
 
-                        //DropdownButtonFormField2<String>(
-                        //  isExpanded: true,
-                        //  decoration: const InputDecoration(
-                        // Add Horizontal padding using menuItemStyleData.padding so it matches
-                        // the menu padding when button's width is not specified.
-                        //    contentPadding: EdgeInsets.symmetric(vertical: 16),
-                        // Add more decoration..
-                        //  ),
-                        //  hint: const Text(
-                        //    'Select the request type',
-                        //    style: TextStyle(fontSize: 14),
-                        //  ),
-                        //  items: requestCategory
-                        //      .map((item) => DropdownMenuItem<String>(
-                        //            value: item,
-                        //            child: Text(
-                        //              item,
-                        //              style: const TextStyle(
-                        //                fontSize: 14,
-                        //              ),
-                        //            ),
-                        //          ))
-                        //      .toList(),
-                        //  validator: (value) {
-                        //    if (value == null) {
-                        //      return 'Please select the request type.';
-                        //    }
-                        //    return null;
-                        //  },
-                        //  onChanged: (value) {
-                        //    setState(() {
-                        //      selectedValue = value.toString();
-                        //      print(selectedValue);
-                        //    });
-                        //  },
-                        //  onSaved: (value) {},
-                        //  buttonStyleData: const ButtonStyleData(
-                        //    padding: EdgeInsets.only(right: 8),
-                        //  ),
-                        //  iconStyleData: const IconStyleData(
-                        //    icon: Icon(
-                        //      Iconsax.arrow_circle_down,
-                        //    ),
-                        //    iconSize: 24,
-                        //  ),
-                        //  dropdownStyleData: DropdownStyleData(
-                        //    decoration: BoxDecoration(
-                        //      borderRadius: BorderRadius.circular(15),
-                        //    ),
-                        //  ),
-                        //  menuItemStyleData: const MenuItemStyleData(
-                        //    padding: EdgeInsets.symmetric(horizontal: 16),
-                        //  ),
-                        //),
-
                         const SizedBox(height: FSizes.spaceBtwInputFields),
 
-                        TextField(
+                        TextFormField(
                           controller: requestController.fullName,
                           decoration: const InputDecoration(
                             prefixIcon: Icon(Iconsax.frame_1),
@@ -172,7 +110,7 @@ class _RequestState extends State<Request> {
 
                         const SizedBox(height: FSizes.spaceBtwInputFields),
 
-                        TextField(
+                        TextFormField(
                           controller: requestController.amount,
                           keyboardType: TextInputType.number,
                           inputFormatters: <TextInputFormatter>[
@@ -192,7 +130,7 @@ class _RequestState extends State<Request> {
 
                         const SizedBox(height: FSizes.spaceBtwInputFields),
 
-                        TextField(
+                        TextFormField(
                           controller: requestController.description,
                           minLines: 1,
                           maxLines: 10,
@@ -218,8 +156,10 @@ class _RequestState extends State<Request> {
                               ? 'Please not the first day'
                               : null,
                           onDateSelected: (DateTime value) {
-                            selectedDate = value;
-                            print(value);
+                            setState(() {
+                              selectedDate = value;
+                              print(selectedDate);
+                            });
                           },
                           firstDate: DateTime(2000),
                           lastDate: DateTime(3000),
@@ -237,16 +177,18 @@ class _RequestState extends State<Request> {
                             Row(
                               children: [
                                 Radio(
-                                  toggleable: true,
                                   value: payerList[0],
                                   groupValue: payerSelected,
                                   fillColor:
                                       const MaterialStatePropertyAll<Color?>(
                                           FColors.primary),
                                   hoverColor: FColors.black,
-                                  onChanged: (value) => setState(() {
-                                    payerSelected = value;
-                                  }),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      payerSelected = value!;
+                                      print(payerSelected);
+                                    });
+                                  },
                                   activeColor: Colors.black12,
                                 ),
                                 const Text("ACLIS"),
@@ -258,99 +200,93 @@ class _RequestState extends State<Request> {
                                       const MaterialStatePropertyAll<Color?>(
                                           FColors.primary),
                                   activeColor: FColors.primary,
-                                  onChanged: (value) => setState(() {
-                                    payerSelected = value;
-                                  }),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      payerSelected = value!;
+                                      print(payerSelected);
+                                    });
+                                  },
                                 ),
-                                const Text("Me")
+                                const Text("Me"),
                               ],
                             ),
                           ],
                         ),
 
                         const SizedBox(height: FSizes.spaceBtwInputFields),
-
-                        //Row(
-                        //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //  children: [
-                        //    const Text(
-                        //      "Payed by: ",
-                        //      style: TextStyle(fontWeight: FontWeight.w500),
-                        //    ),
-//
-                        //    RadioGroup(
-                        //      // key: horizontalGroupKey,
-                        //      controller: myController,
-                        //      values: const ["Me", "ACLIS"],
-                        //      indexOfDefault: -1,
-                        //      orientation: RadioGroupOrientation.horizontal,
-                        //      decoration: const RadioGroupDecoration(
-                        //          toggleable: true,
-                        //          spacing: 10.0,
-                        //          splashRadius: 20,
-                        //          focusColor: Colors.yellow,
-                        //          fillColor: MaterialStatePropertyAll<Color?>(
-                        //              FColors.primary)
-                        //          //activeColor: FColors.primary
-                        //          ),
-                        //      onChanged: (newValue) => setState(() {
-                        //        horizontalValRequested = newValue.toString();
-                        //        print(horizontalValRequested);
-                        //      }),
-                        //    ),
-                        //  ],
-                        //),
-
-                        const SizedBox(height: FSizes.spaceBtwSections),
-
                         // Submit Button
-                        AnimatedButton(
-                          text: 'Submit',
-                          buttonTextStyle:
-                              const TextStyle(fontSize: FSizes.fontSizeSm),
-                          color: FColors.primary,
-                          borderRadius: BorderRadius.circular(10),
-                          pressEvent: () {
-                            //firestoreService.addRequest(selectedValue.toString(), fullName.text, amount.toString() as double, description.text, selectedDate.toString() as DateTime, myController.toString());
-                            //fullName.clear();
-                            //description.clear();
-                            AwesomeDialog(
-                              context: context,
-                              animType: AnimType.topSlide,
-                              headerAnimationLoop: false,
-                              dialogType: DialogType.success,
-                              showCloseIcon: true,
-                              closeIcon: const Icon(Icons.cancel_outlined),
-                              desc: 'Request successfully submitted',
-                              btnOkOnPress: () {
-                                if (requestForm.currentState!.validate()) {
-                                  final request = Get.put(RequestModel(
-                                      type: requestController.type.text.trim(),
-                                      requesterName: requestController
-                                          .fullName.text
-                                          .trim(),
-                                      amount:
-                                          requestController.amount.text.trim(),
-                                      description: requestController
-                                          .description.text
-                                          .trim(),
-                                      date: selectedDate!,
-                                      payer: payerSelected!));
-                                  RequestController.instance
-                                      .addNewRequest(request);
-                                  requestForm.currentState!.save();
-                                  Get.to(() => const Home());
-                                }
-                                debugPrint('OnClick');
-                              },
-                              btnOkIcon: Icons.check_circle,
-                              onDismissCallback: (type) {
-                                debugPrint(
-                                    'Dialog Dismiss from callback $type');
-                              },
-                            ).show();
-                          },
+                        SizedBox(
+                          height: 50,
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            style: const ButtonStyle(),
+                            onPressed: () {
+                              if (requestForm.currentState!.validate()) {
+                                final request = Get.put(RequestModel(
+                                  type: selectedValue!,
+                                  requesterName:
+                                      requestController.fullName.text.trim(),
+                                  amount: requestController.amount.text.trim(),
+                                  description:
+                                      requestController.description.text.trim(),
+                                  date: selectedDate!,
+                                  payer: payerSelected!,
+                                ));
+                                RequestController.instance
+                                    .addNewRequest(request);
+                                requestForm.currentState!.save();
+
+                                clear();
+                                Get.to(() => const Home());
+                              }
+                            },
+                            child: Text('Submit'),
+                          ),
                         ),
+                        //AnimatedButton(
+                        //  text: 'Submit',
+                        //  buttonTextStyle:
+                        //      const TextStyle(fontSize: FSizes.fontSizeSm),
+                        //  color: FColors.primary,
+                        //  borderRadius: BorderRadius.circular(10),
+                        //  pressEvent: () {
+                        //    AwesomeDialog(
+                        //      context: context,
+                        //      animType: AnimType.topSlide,
+                        //      headerAnimationLoop: false,
+                        //      dialogType: DialogType.success,
+                        //      showCloseIcon: true,
+                        //      closeIcon: const Icon(Icons.cancel_outlined),
+                        //      desc: 'Request successfully submitted',
+                        //      btnOkOnPress: () {
+                        //        if (requestForm.currentState!.validate()) {
+                        //          final request = Get.put(RequestModel(
+                        //            type: requestController.type.text.trim(),
+                        //            requesterName:
+                        //                requestController.fullName.text.trim(),
+                        //            amount:
+                        //                requestController.amount.text.trim(),
+                        //            description: requestController
+                        //                .description.text
+                        //                .trim(),
+                        //            date: selectedDate,
+                        //            payer: payerSelected!,
+                        //          ));
+                        //          RequestController.instance
+                        //              .addNewRequest(request);
+                        //          requestForm.currentState!.save();
+                        //          Get.to(() => const Home());
+                        //        }
+                        //        debugPrint('OnClick');
+                        //      },
+                        //      btnOkIcon: Icons.check_circle,
+                        //      onDismissCallback: (type) {
+                        //        debugPrint(
+                        //            'Dialog Dismiss from callback $type');
+                        //      },
+                        //    ).show();
+                        //  },
+                        //),
                       ],
                     ),
                   ))

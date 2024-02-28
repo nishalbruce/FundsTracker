@@ -14,8 +14,6 @@ class RequestController extends GetxController{
   final fullName = TextEditingController();
   final amount = TextEditingController();
   final description = TextEditingController();
-  final date = TextEditingController();
-  final payer = TextEditingController();
 
 
   // List of all requests

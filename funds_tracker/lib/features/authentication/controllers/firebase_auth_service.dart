@@ -63,40 +63,4 @@ class FirebaseAuthService {
       }
     });
   }
-
-  //Future<void> readData(UserCredential credential) async{
-  //  firebaseFirestore.collection("users")
-  //      .doc(credential.user!.uid)
-  //      .get()
-  //      .then((value) async {
-  //        var json = value.data();
-//
-  //        if (json != null) {
-  //          SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  //          await sharedPreferences.setString(AppConstants.userID, credential.user!.uid);
-  //          await sharedPreferences.setString(AppConstants.email, credential.user!.email!);
-  //          await sharedPreferences.setString(AppConstants.pswd, credential.user.);
-  //          await sharedPreferences.setString(AppConstants.role, json[AppConstants.role]);
-  //          await sharedPreferences.setString(AppConstants.username, json[AppConstants.username]);
-  //        } else {
-  //          print("Hello");
-  //        }
-//
-  //        //SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  //        //await sharedPreferences.setString(AppConstants.userID, json[AppConstants.userID]);
-  //        //await sharedPreferences.setString(AppConstants.email, json[AppConstants.email]);
-  //        //await sharedPreferences.setString(AppConstants.pswd, json[AppConstants.pswd]);
-  //        //await sharedPreferences.setString(AppConstants.role, json[AppConstants.role]);
-  //        //await sharedPreferences.setString(AppConstants.username, json[AppConstants.username]);
-  //  });
-  //}
-//
-  //bool clearPreferences(){
-  //  AppConstants.sharedPreferences!.remove(AppConstants.userID);
-  //  AppConstants.sharedPreferences!.remove(AppConstants.email);
-  //  AppConstants.sharedPreferences!.remove(AppConstants.pswd);
-  //  AppConstants.sharedPreferences!.remove(AppConstants.role);
-  //  AppConstants.sharedPreferences!.remove(AppConstants.username);
-  //  return true;
-  //}
 }

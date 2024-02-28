@@ -202,6 +202,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     // Validation Button
                     SizedBox(
+                      height: 50,
                       width: double.infinity,
                       child: ElevatedButton(
                           onPressed: validateSignIn,

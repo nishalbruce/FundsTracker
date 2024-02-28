@@ -1,4 +1,3 @@
-
 class RequestModel {
   final String type;
   final String requesterName;
@@ -18,15 +17,14 @@ class RequestModel {
     this.status = "Pending",
   });
 
-  RequestModel.fromJson(Map<String, dynamic> json):
-        type = json["type"],
-  requesterName = json["requesterName"],
+  RequestModel.fromJson(Map<String, dynamic> json)
+      : type = json["type"],
+        requesterName = json["requesterName"],
         amount = json["amount"],
         description = json["description"],
         date = json["date"],
         payer = json["payer"],
         status = json["status"];
-
 
   Map<String, dynamic> toJson() => {
         "type": type,
@@ -37,29 +35,4 @@ class RequestModel {
         "payer": payer,
         "status": status
       };
-
-  //static Request fromSnap(DocumentSnapshot snap) {
-  //  var snapshot = snap.data() as Map<String, dynamic>;
-  //  return Request(
-  //    type: snapshot['type'],
-  //    requesterName: snapshot['requesterName'],
-  //    amount: snapshot['amount'],
-  //    description: snapshot['description'],
-  //    date: snapshot['date'],
-  //    payer: snapshot['payer'],
-  //    status: snapshot['status'],
-  //  );
-  //}
-//
-  //static Request fromJson(Map<String, dynamic> json) {
-  //  return Request(
-  //    type: json['type'],
-  //    requesterName: json['requesterName'],
-  //    amount: json['amount'],
-  //    description: json['description'],
-  //    date: json['date'],
-  //    payer: json['payer'],
-  //    status: json['status'],
-  //  );
-  //}
 }
