@@ -37,6 +37,8 @@ dependencies:
   shared_preferences: ^2.2.2
   firebase_database: ^10.4.0
   provider: ^6.1.1
+  json_annotation: ^4.8.0
+  intl: ^0.18.1
 
 #------------------- PACKAGES END ----------------#
 
@@ -45,6 +47,8 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^3.0.0
+  build_runner: ^2.3.3
+  json_serializable: ^6.7.1
 
 
 

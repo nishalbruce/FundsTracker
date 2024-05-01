@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:funds_tracker/features/requesteractions/screens/view_request.dart';
 import 'package:get/get.dart';
 
-class RequestListTile extends StatefulWidget {
-  //final requestName;
-  //final date;
-  //final time;
-//
-  const RequestListTile({
-    super.key,
-    //required this.requestName,
-    //required this.date,
-    //required this.time
-  });
+class RequestListTile extends StatelessWidget {
+  String reqId;
+  String requestName;
+  String date;
+  String time;
 
-  @override
-  State<RequestListTile> createState() => _RequestListTileState();
-}
+  RequestListTile(
+      {super.key,
+      required this.reqId,
+      required this.requestName,
+      required this.date,
+      required this.time});
 
-class _RequestListTileState extends State<RequestListTile> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,7 +23,7 @@ class _RequestListTileState extends State<RequestListTile> {
         Padding(
           padding: const EdgeInsets.only(bottom: 12.0),
           child: GestureDetector(
-            onTap: () => Get.to(() => const ViewRequest()),
+            onTap: () => Get.to(() => ViewRequest(requestId: reqId,)),
             child: Container(
               decoration: BoxDecoration(
                   border: Border.all(
@@ -35,16 +32,16 @@ class _RequestListTileState extends State<RequestListTile> {
                   ),
                   borderRadius: BorderRadius.circular(5)),
               height: 65,
-              child: const Padding(
-                padding: EdgeInsets.all(10.0),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      "Request #1",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                      requestName,
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w700),
                     ),
 
                     //SizedBox(
@@ -55,12 +52,12 @@ class _RequestListTileState extends State<RequestListTile> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "12/10/2023",
-                          style: TextStyle(fontSize: 13.3),
+                          date,
+                          style: const TextStyle(fontSize: 13.3),
                         ),
                         Text(
-                          "02:30 PM",
-                          style: TextStyle(fontSize: 13.3),
+                          time,
+                          style: const TextStyle(fontSize: 13.3),
                         ),
                       ],
                     )

@@ -24,6 +24,12 @@ class RequestController extends GetxController{
     return overallRequestList;
   }
 
+  void getAllPendingRequestsList() {
+    FirestoreService.instance.getPendingRequests();
+  }
+
+
+
   // Add new request
   void addNewRequest(RequestModel newRequest) {
     FirestoreService.instance.addRequest(newRequest);

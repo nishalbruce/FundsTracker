@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:funds_tracker/features/requesteractions/controllers/firestore_service.dart';
 import 'package:funds_tracker/utils/constants/colors.dart';
+import 'package:get/get.dart';
 import '../../../utils/constants/image_strings.dart';
 
+// ignore: must_be_immutable
 class ViewRequest extends StatefulWidget {
-  const ViewRequest({super.key});
+  String requestId;
+  ViewRequest({super.key, required this.requestId});
 
   @override
   State<ViewRequest> createState() => _ViewRequestState();
 }
 
 class _ViewRequestState extends State<ViewRequest> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,116 +37,129 @@ class _ViewRequestState extends State<ViewRequest> {
                 const SizedBox(
                   height: 20,
                 ),
-                Column(
-                  children: [
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Requester Name: "),
-                        Text("Alain Bruce"),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Divider(thickness: 0.5),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Requester Type: "),
-                        Text("Transport"),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Divider(thickness: 0.5),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Description: "),
-                        Text("Lorem ipsum"),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Divider(thickness: 0.5),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Amount: "),
-                        Text("30.000"),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Divider(thickness: 0.5),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Date: "),
-                        Text("20/12/2023"),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Divider(thickness: 0.5),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Paid by: "),
-                        Text("ACLIS"),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Divider(thickness: 0.5),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text("Status: "),
-                        Container(
-                          padding: const EdgeInsets.fromLTRB(20,10,20,10),
-                          decoration: BoxDecoration(
-                            color: FColors.orangeTertiary,
-                            borderRadius: BorderRadius.circular(20)
-                          ),
-                          child: const Text(
-                            "Pending",
-                            style: TextStyle(
-                            color: FColors.orangePrimary,
-                          ),),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Divider(thickness: 0.5),
-                  ],
-                )
+                StreamBuilder(
+                    stream: Get.put(
+                        FirestoreService().getRequestDetail(widget.requestId)),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        //final data = snapshot.data?.data();
+                        return Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Requester Name: "),
+                                Text(snapshot.data!['requester']),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            const Divider(thickness: 0.5),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Requester Type: "),
+                                Text(snapshot.data!['type']),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            const Divider(thickness: 0.5),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Description: "),
+                                Text(snapshot.data!['description']),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            const Divider(thickness: 0.5),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Amount: "),
+                                Text(snapshot.data!['amount']),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            const Divider(thickness: 0.5),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            const Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Date: "),
+                                //Text(DateFormat.yMd().format(snapshot.data!['date'])),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            const Divider(thickness: 0.5),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Paid by: "),
+                                Text(snapshot.data!['payer']),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            const Divider(thickness: 0.5),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Status: "),
+                                Container(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                  decoration: BoxDecoration(
+                                      color: FColors.orangeTertiary,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: Text(
+                                    snapshot.data!['status'],
+                                    style: const TextStyle(
+                                      color: FColors.orangePrimary,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            const Divider(thickness: 0.5),
+                          ],
+                        );
+                      } else {
+                        return const Center(
+                          child: Text('nothing to show!'),
+                        );
+                      }
+                    }),
               ],
             ),
           ),

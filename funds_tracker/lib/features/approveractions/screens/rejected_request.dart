@@ -46,17 +46,17 @@ class _RejectedRequestsState extends State<RejectedRequests> {
               Expanded(
                 child: ListView(
                   children: const [
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
+                    //RequestListTile(),
+                    //RequestListTile(),
+                    //RequestListTile(),
+                    //RequestListTile(),
+                    //RequestListTile(),
+                    //RequestListTile(),
+                    //RequestListTile(),
+                    //RequestListTile(),
+                    //RequestListTile(),
+                    //RequestListTile(),
+                    //RequestListTile(),
                   ],
                 ),
               )

@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:funds_tracker/features/requesteractions/controllers/firestore_service.dart';
+import 'package:get/get.dart';
 import '../../../common/components/request_list_tile.dart';
 
 class History extends StatefulWidget {
@@ -51,21 +54,46 @@ class _HistoryState extends State<History> {
               //    onChanged: onChanged,
               //),
               Expanded(
-                child: ListView(
-                  children: const [
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                    RequestListTile(),
-                  ],
-                ),
+                child: StreamBuilder<QuerySnapshot>(
+                    stream: Get.put(FirestoreService()).getRequestsStream(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        List requestsList = snapshot.data!.docs;
+
+                        return ListView.builder(
+                            itemCount: requestsList.length,
+                            itemBuilder: (context, index) {
+                              //Get each individual document
+                              DocumentSnapshot document = requestsList[index];
+                              String docId = document.id;
+
+                              //Get request from each doc
+                              Map<String, dynamic> data =
+                                  document.data() as Map<String, dynamic>;
+
+                              Timestamp t = data['date'] as Timestamp;
+                              DateTime date = t.toDate();
+                              //String typeText = data['type'];
+                              String requesterText = data['requester'];
+                              //String amountText = data['amount'];
+                              //String descriptionText = data['description'];
+                              //Timestamp dateText = data['date'];
+                              //String payerText = data['payer'];
+                              //String statusText = data['status'];
+
+                              //Display as a ListTile
+                              //return ListTile(title: Text('${date.day}/${date.month}/${date.year}'), subtitle: Text('date'),);
+                              return RequestListTile(
+                                reqId: document.id,
+                                requestName: requesterText,
+                                date: '${date.day}/${date.month}/${date.year}',
+                                time: '${date.hour}:${date.minute}',
+                              );
+                            });
+                      } else {
+                        return const Text("No request to display");
+                      }
+                    }),
               )
             ],
           ),
