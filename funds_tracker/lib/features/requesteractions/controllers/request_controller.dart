@@ -7,14 +7,13 @@ import 'package:get/get.dart';
 //import 'package:get/get.dart';
 //import '../../../common/components/navbar.dart';
 
-class RequestController extends GetxController{
+class RequestController extends GetxController {
   static RequestController get instance => Get.find();
 
   final type = TextEditingController();
   final fullName = TextEditingController();
   final amount = TextEditingController();
   final description = TextEditingController();
-
 
   // List of all requests
   List<RequestModel> overallRequestList = [];
@@ -28,12 +27,10 @@ class RequestController extends GetxController{
     FirestoreService.instance.getPendingRequests();
   }
 
-
-
   // Add new request
-  void addNewRequest(RequestModel newRequest) {
-    FirestoreService.instance.addRequest(newRequest);
-    overallRequestList.add(newRequest);
+  void addNewRequest(RequestModel newReq) {
+    FirestoreService.instance.addRequest(newReq);
+    overallRequestList.add(newReq);
   }
 
   // Delete request

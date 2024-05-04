@@ -23,7 +23,7 @@ class RequestListTile extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 12.0),
           child: GestureDetector(
-            onTap: () => Get.to(() => ViewRequest(requestId: reqId,)),
+            onTap: () => Get.to(() => ViewRequest(requestId: reqId)),
             child: Container(
               decoration: BoxDecoration(
                   border: Border.all(

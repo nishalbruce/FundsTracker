@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Statistics extends StatefulWidget {
   const Statistics({super.key});
@@ -9,6 +10,10 @@ class Statistics extends StatefulWidget {
 }
 
 class _StatisticsState extends State<Statistics> {
+  Stream<QuerySnapshot> getRequest() {
+    return FirebaseFirestore.instance.collection("requests").snapshots();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +23,7 @@ class _StatisticsState extends State<Statistics> {
           automaticallyImplyLeading: false,
           title: const Text(
             "Statistics",
-            style: TextStyle(
-            ),
+            style: TextStyle(),
           ),
         ),
         body: SingleChildScrollView(
@@ -33,22 +37,66 @@ class _StatisticsState extends State<Statistics> {
                     height: 10,
                   ),
                   SizedBox(
-                    width: 250,
-                    height: 250,
-                    child: PieChart(
-                      PieChartData(
-                        borderData: FlBorderData(show: false),
-                        //centerSpaceRadius: 0,
-                        sectionsSpace: 2,
-                        sections: [
-                          PieChartSectionData(value: 35, color: Colors.grey, title: "Transport", radius: 60),
-                          PieChartSectionData(value: 40, color: Colors.blueAccent, title: "Dishes", radius:70),
-                          PieChartSectionData(value: 55, color: Colors.red, title: "Airtime", radius: 80),
-                          PieChartSectionData(value: 70, color: Colors.orange, title: "Snacks", radius: 100),
-                        ]
-                      ),
-                    ),
-                  ),
+                      width: 250,
+                      height: 250,
+                      child: StreamBuilder(
+                          stream: getRequest(),
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData) {
+                              return const CircularProgressIndicator();
+                            } else if (snapshot.hasError) {
+                              return const Text('Something went wrong');
+                            } else {
+                              List<QueryDocumentSnapshot> documents =
+                                  snapshot.data!.docs;
+                              int airTimeCount = 0;
+                              int transportCount = 0;
+                              int dishesCount = 0;
+                              int waterCount = 0;
+
+                              documents.forEach((doc) {
+                                String requestType = doc['type'];
+                                if (requestType == 'Airtime') {
+                                  airTimeCount++;
+                                } else if (requestType == 'Transport') {
+                                  transportCount++;
+                                } else if (requestType == 'Dishes') {
+                                  dishesCount++;
+                                } else if (requestType == 'Water') {
+                                  waterCount++;
+                                }
+                              });
+
+                              return PieChart(
+                                PieChartData(
+                                    borderData: FlBorderData(show: false),
+                                    //centerSpaceRadius: 0,
+                                    sectionsSpace: 2,
+                                    sections: [
+                                      PieChartSectionData(
+                                          value: transportCount.toDouble(),
+                                          color: Colors.grey,
+                                          title: "Transport",
+                                          radius: 60),
+                                      PieChartSectionData(
+                                          value: dishesCount.toDouble(),
+                                          color: Colors.blueAccent,
+                                          title: "Dishes",
+                                          radius: 70),
+                                      PieChartSectionData(
+                                          value: airTimeCount.toDouble(),
+                                          color: Colors.red,
+                                          title: "Airtime",
+                                          radius: 80),
+                                      PieChartSectionData(
+                                          value: waterCount.toDouble(),
+                                          color: Colors.orange,
+                                          title: "Water",
+                                          radius: 100),
+                                    ]),
+                              );
+                            }
+                          })),
                   const SizedBox(
                     height: 50,
                   ),
@@ -56,22 +104,16 @@ class _StatisticsState extends State<Statistics> {
                   const SizedBox(
                     height: 30,
                   ),
-
                   SizedBox(
-                    height: 250,
-                    child: BarChart(
-                      BarChartData(
+                      height: 250,
+                      child: BarChart(BarChartData(
                         maxY: 100,
                         minY: 0,
-                      )
-                    )
-                  ),
+                      ))),
                 ],
               ),
             ),
           ),
-        )
-    );
+        ));
   }
 }
-

@@ -236,7 +236,7 @@ class _RequestState extends State<Request> {
                                     .addNewRequest(request);
                                 requestForm.currentState!.save();
 
-                                clear();
+                                //clear();
                                 Get.to(() => const Home());
                               }
                             },

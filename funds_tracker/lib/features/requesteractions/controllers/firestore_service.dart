@@ -9,15 +9,27 @@ class FirestoreService extends GetxController {
       FirebaseFirestore.instance.collection("requests");
 
   //Create (Add a new request)
-  Future<void> addRequest(RequestModel newRequest) async {
-    await requests.add({
-      'type': newRequest.type,
-      'requester': newRequest.requesterName,
-      'amount': newRequest.amount,
-      'description': newRequest.description,
-      'date': newRequest.date,
-      'payer': newRequest.payer,
-      'status': newRequest.status
+  //Future<void> addRequest(RequestModel newRequest) async {
+  //  await requests.add({
+  //    'type': newRequest.type,
+  //    'requester': newRequest.requesterName,
+  //    'amount': newRequest.amount,
+  //    'description': newRequest.description,
+  //    'date': newRequest.date,
+  //    'payer': newRequest.payer,
+  //    'status': newRequest.status
+  //  });
+  //}
+
+  void addRequest(RequestModel newReq){
+    FirebaseFirestore.instance.collection("requests").add({
+      "type": newReq.type,
+      "requester": newReq.requesterName,
+      "amount": newReq.amount,
+      "description": newReq.description,
+      "date": newReq.date,
+      "payer": newReq.payer,
+      "status": newReq.payer,
     });
   }
 

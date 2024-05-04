@@ -104,7 +104,7 @@ class _ViewRequestState extends State<ViewRequest> {
                             const Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text("Date: "),
+                                Text("Date: "),
                                 //Text(DateFormat.yMd().format(snapshot.data!['date'])),
                               ],
                             ),
@@ -163,6 +163,7 @@ class _ViewRequestState extends State<ViewRequest> {
               ],
             ),
           ),
-        ));
+        )
+      );
   }
 }
