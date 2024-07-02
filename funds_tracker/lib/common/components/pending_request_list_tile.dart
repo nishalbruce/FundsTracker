@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:funds_tracker/features/requesteractions/screens/view_request.dart';
+//import 'package:funds_tracker/features/requesteractions/screens/view_request.dart';
 import 'package:get/get.dart';
 
 import '../../features/approveractions/screens/view_pending_request.dart';
@@ -26,7 +26,9 @@ class PendingRequestListTile extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 12.0),
           child: GestureDetector(
-            onTap: () => Get.to(() => ViewPendingRequest(requestId: reqId,)),
+            onTap: () => Get.to(() => ViewPendingRequest(
+                  requestId: reqId,
+                )),
             child: Container(
               decoration: BoxDecoration(
                   border: Border.all(
@@ -74,4 +76,3 @@ class PendingRequestListTile extends StatelessWidget {
     );
   }
 }
-

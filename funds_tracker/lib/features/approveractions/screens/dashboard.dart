@@ -16,9 +16,12 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  Stream<QuerySnapshot> getRequest() {
-    return FirebaseFirestore.instance.collection("requests").snapshots();
-  }
+  //Stream<QuerySnapshot> getRequest() {
+  //  return FirebaseFirestore.instance.collection("requests").snapshots();
+  //}
+
+  CollectionReference request =
+      FirebaseFirestore.instance.collection('requests');
 
   @override
   Widget build(BuildContext context) {
@@ -36,140 +39,145 @@ class _DashboardState extends State<Dashboard> {
                     "Dashboard",
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
                   ),
-
                   Icon(
                     Iconsax.notification_bing5,
                   ),
-
-                  //Container(
-                  //  decoration: BoxDecoration(
-                  //    color: Colors.grey[300],
-                  //    borderRadius: BorderRadius.circular(12),
-                  //  ),
-                  //  padding: EdgeInsets.all(12),
-                  //  child: Icon(
-                  //    Icons.notifications,
-                  //  ),
-                  //)
                 ],
               ),
               const SizedBox(
                 height: 20,
               ),
-              //StreamBuilder(
-              //    stream: getRequest(),
-              //    builder: (context, snapshot) {
-              //      if (!snapshot.hasData) {
-              //        return const Center(child: CircularProgressIndicator());
-              //      }else if(snapshot.hasError){
-              //        return const Center(child: Text('Something went wrong'));
-              //      }else if(snapshot.hasData){
-              //        
-              //      }
-              //      else{}
-              //    }),
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                        onTap: () => Get.to(() => const PendingRequests()),
-                        child: Container(
-                          width: 165,
-                          decoration: BoxDecoration(
-                            color: const Color(0x2BFFA012),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          padding: const EdgeInsets.fromLTRB(17, 17, 17, 10),
-                          child: const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Pending Requests",
-                                style: TextStyle(
-                                    color: Color(0xFFFFA012),
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Text(
-                                "10",
-                                style: TextStyle(
-                                    color: Color(0x73FFA012),
-                                    fontSize: 64,
-                                    fontWeight: FontWeight.w900),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () => Get.to(() => const ApprovedRequests()),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: const Color(0x2B17D72A),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          width: 165,
-                          padding: const EdgeInsets.fromLTRB(17, 17, 17, 10),
-                          child: const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Approved Requests",
-                                style: TextStyle(
-                                    color: Color(0xFF17D72A),
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Text(
-                                "10",
-                                style: TextStyle(
-                                    color: Color(0x7317D72A),
-                                    fontSize: 64,
-                                    fontWeight: FontWeight.w900),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 22.5,
-                  ),
-                  GestureDetector(
-                    onTap: () => Get.to(() => const RejectedRequests()),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color(0x2BE9190C),
-                      ),
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(17),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              FutureBuilder(
+                  future: Future.wait([
+                    request.where('status', isEqualTo: 'Pending').get(),
+                    request.where('status', isEqualTo: 'Approved').get(),
+                    request.where('status', isEqualTo: 'Rejected').get(),
+                  ]),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (snapshot.hasError) {
+                      return const Center(
+                        child: Text('Something went wrong'),
+                      );
+                    } else {
+                      final pendingCount = snapshot.data![0];
+                      final approvedCount = snapshot.data![1];
+                      final rejectedCount = snapshot.data![2];
+
+                      return Column(
                         children: [
-                          Text(
-                            "Rejected Requests",
-                            style: TextStyle(
-                                color: Color(0xFFE9190C),
-                                fontSize: 24,
-                                fontWeight: FontWeight.w500),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              GestureDetector(
+                                onTap: () =>
+                                    Get.to(() => const PendingRequests()),
+                                child: Container(
+                                  width: 165,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0x2BFFA012),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(17, 17, 17, 10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        "Pending Requests",
+                                        style: TextStyle(
+                                            color: Color(0xFFFFA012),
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      Text(
+                                        pendingCount.docs.length.toString(),
+                                        style: const TextStyle(
+                                            color: Color(0x73FFA012),
+                                            fontSize: 64,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () =>
+                                    Get.to(() => const ApprovedRequests()),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: const Color(0x2B17D72A),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  width: 165,
+                                  padding:
+                                      const EdgeInsets.fromLTRB(17, 17, 17, 10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        "Approved Requests",
+                                        style: TextStyle(
+                                            color: Color(0xFF17D72A),
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      Text(
+                                        approvedCount.docs.length.toString(),
+                                        style: const TextStyle(
+                                            color: Color(0x7317D72A),
+                                            fontSize: 64,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          Text(
-                            "10",
-                            style: TextStyle(
-                                color: Color(0x73E9190C),
-                                fontSize: 64,
-                                fontWeight: FontWeight.w900),
+                          const SizedBox(
+                            height: 22.5,
+                          ),
+                          GestureDetector(
+                            onTap: () => Get.to(() => const RejectedRequests()),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: const Color(0x2BE9190C),
+                              ),
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(17),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const Text(
+                                    "Rejected Requests",
+                                    style: TextStyle(
+                                        color: Color(0xFFE9190C),
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  Text(
+                                    rejectedCount.docs.length.toString(),
+                                    style: const TextStyle(
+                                        color: Color(0x73E9190C),
+                                        fontSize: 64,
+                                        fontWeight: FontWeight.w900),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                      );
+                    }
+                  }),
               const SizedBox(
                 height: 30,
               ),

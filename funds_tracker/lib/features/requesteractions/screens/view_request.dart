@@ -163,7 +163,6 @@ class _ViewRequestState extends State<ViewRequest> {
               ],
             ),
           ),
-        )
-      );
+        ));
   }
 }

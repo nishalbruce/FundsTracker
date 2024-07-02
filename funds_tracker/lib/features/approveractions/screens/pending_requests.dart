@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../common/components/pending_request_list_tile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../../../common/components/request_list_tile.dart';
 import '../../requesteractions/controllers/firestore_service.dart';
 
@@ -21,7 +19,7 @@ class _PendingRequestsState extends State<PendingRequests> {
           centerTitle: false,
           elevation: 1,
           title: const Text(
-            "Pending Request",
+            "Pending Requests",
             style: TextStyle(),
             textAlign: TextAlign.center,
           ),
@@ -31,13 +29,13 @@ class _PendingRequestsState extends State<PendingRequests> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                "Filter by",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-              ),
+              //const SizedBox(
+              //  height: 10,
+              //),
+              //const Text(
+              //  "Filter by",
+              //  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+              //),
               const SizedBox(
                 height: 10,
               ),
@@ -45,11 +43,6 @@ class _PendingRequestsState extends State<PendingRequests> {
               //    items: items,
               //    onChanged: onChanged,
               //),
-              Expanded(
-                child: ListView(
-                  children: const [],
-                ),
-              ),
               Expanded(
                 child: StreamBuilder(
                     stream: Get.put(FirestoreService()).getRequestsStream(),
