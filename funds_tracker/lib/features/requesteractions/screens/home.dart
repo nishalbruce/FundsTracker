@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:funds_tracker/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../common/components/request_list_tile.dart';
+import '../../authentication/controllers/auth_controller.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -19,6 +20,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final AuthController _authController = AuthController();
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final user = FirebaseAuth.instance.currentUser!;
 
   var _numberToMonthMap = {
@@ -57,6 +60,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final User? userDoc = firebaseAuth.currentUser;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -64,16 +68,34 @@ class _HomeState extends State<Home> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "👋🏻 Hello, John",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                  ),
-                  Icon(Iconsax.notification_bing5),
-                ],
-              ),
+              StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection("users")
+                      .doc(userDoc?.uid)
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (snapshot.hasError) {
+                      return const Center(
+                        child: Text("Something went wrong"),
+                      );
+                    } else {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "👋🏻 Hello, " + snapshot.data!["username"],
+                            style: const TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w600),
+                          ),
+                          //Icon(Iconsax.notification_bing5),
+                        ],
+                      );
+                    }
+                  }),
               const SizedBox(
                 height: 20,
               ),
@@ -84,6 +106,7 @@ class _HomeState extends State<Home> {
               const SizedBox(
                 height: 10,
               ),
+              
               Expanded(
                 child: StreamBuilder(
                     stream: Get.put(FirestoreService()).getRequestsStream(),

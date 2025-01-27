@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:funds_tracker/features/approveractions/screens/approved_requests.dart';
 import 'package:funds_tracker/features/approveractions/screens/pending_requests.dart';
@@ -8,6 +9,8 @@ import 'package:get/get.dart';
 import '../../../common/components/request_list_tile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../authentication/controllers/auth_controller.dart';
+
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
 
@@ -16,6 +19,27 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  final AuthController _authController = AuthController();
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+
+  // Document IDs
+  List<String> docIDs = [];
+
+  // Get Document IDs
+  Future getDocId() async {
+    await FirebaseFirestore.instance.collection('users').get().then(
+          (snapshot) => snapshot.docs.forEach((document) {
+            print(document.reference);
+            docIDs.add(document.reference.id);
+          }),
+        );
+  }
+
+  @override
+  void initState() {
+    getDocId();
+    super.initState();
+  }
   //Stream<QuerySnapshot> getRequest() {
   //  return FirebaseFirestore.instance.collection("requests").snapshots();
   //}
@@ -25,6 +49,7 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
+    final User? userDoc = firebaseAuth.currentUser;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -32,6 +57,37 @@ class _DashboardState extends State<Dashboard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection("users")
+                      .doc(userDoc?.uid)
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (snapshot.hasError) {
+                      return const Center(
+                        child: Text("Something went wrong"),
+                      );
+                    } else {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "👋🏻 Hello, " + snapshot.data!["username"],
+                            style: const TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w600),
+                          ),
+                          //Icon(Iconsax.notification_bing5),
+                        ],
+                      );
+                    }
+                  }),
+              const SizedBox(
+                height: 20,
+              ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -39,9 +95,9 @@ class _DashboardState extends State<Dashboard> {
                     "Dashboard",
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
                   ),
-                  Icon(
-                    Iconsax.notification_bing5,
-                  ),
+                  //Icon(
+                  //  Iconsax.notification_bing5,
+                  //),
                 ],
               ),
               const SizedBox(
