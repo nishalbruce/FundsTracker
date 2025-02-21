@@ -1,14 +1,12 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_logger/flutter_logger.dart';
-import 'package:funds_tracker/common/components/datetimeform.dart';
 import 'package:funds_tracker/features/requesteractions/controllers/firestore_service.dart';
 import 'package:funds_tracker/features/requesteractions/controllers/request_controller.dart';
 import 'package:funds_tracker/features/requesteractions/models/request_model.dart';
 import 'package:funds_tracker/features/requesteractions/screens/home.dart';
 import 'package:funds_tracker/utils/constants/colors.dart';
-//import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:date_field/date_field.dart';
@@ -144,15 +142,6 @@ class _RequestState extends State<Request> {
 
                         const SizedBox(height: FSizes.spaceBtwInputFields),
 
-                        DateTimePickerForm(
-                          onDateSelected: (DateTime value) {
-                            setState(() {
-                              selectedDate = value;
-                              print(selectedDate);
-                            });
-                          },
-                        ),
-
                         DateTimeFormField(
                           decoration: const InputDecoration(
                             hintStyle: TextStyle(color: Colors.black45),
@@ -163,7 +152,9 @@ class _RequestState extends State<Request> {
                           ),
                           mode: DateTimeFieldPickerMode.date,
                           autovalidateMode: AutovalidateMode.always,
-                          validator: (e) => (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
+                          validator: (e) => (e?.day ?? 0) == 1
+                              ? 'Please not the first day'
+                              : null,
                           onDateSelected: (DateTime value) {
                             setState(() {
                               selectedDate = value;
@@ -252,6 +243,50 @@ class _RequestState extends State<Request> {
                             child: Text('Submit'),
                           ),
                         ),
+                        //AnimatedButton(
+                        //  text: 'Submit',
+                        //  buttonTextStyle:
+                        //      const TextStyle(fontSize: FSizes.fontSizeSm),
+                        //  color: FColors.primary,
+                        //  borderRadius: BorderRadius.circular(10),
+                        //  pressEvent: () {
+                        //    AwesomeDialog(
+                        //      context: context,
+                        //      animType: AnimType.topSlide,
+                        //      headerAnimationLoop: false,
+                        //      dialogType: DialogType.success,
+                        //      showCloseIcon: true,
+                        //      closeIcon: const Icon(Icons.cancel_outlined),
+                        //      desc: 'Request successfully submitted',
+                        //      btnOkOnPress: () {
+                        //        if (requestForm.currentState!.validate()) {
+                        //          final request = Get.put(RequestModel(
+                        //            type: requestController.type.text.trim(),
+                        //            requesterName:
+                        //                requestController.fullName.text.trim(),
+                        //            amount:
+                        //                requestController.amount.text.trim(),
+                        //            description: requestController
+                        //                .description.text
+                        //                .trim(),
+                        //            date: selectedDate,
+                        //            payer: payerSelected!,
+                        //          ));
+                        //          RequestController.instance
+                        //              .addNewRequest(request);
+                        //          requestForm.currentState!.save();
+                        //          Get.to(() => const Home());
+                        //        }
+                        //        debugPrint('OnClick');
+                        //      },
+                        //      btnOkIcon: Icons.check_circle,
+                        //      onDismissCallback: (type) {
+                        //        debugPrint(
+                        //            'Dialog Dismiss from callback $type');
+                        //      },
+                        //    ).show();
+                        //  },
+                        //),
                       ],
                     ),
                   ))
